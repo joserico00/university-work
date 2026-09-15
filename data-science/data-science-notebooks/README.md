@@ -1,6 +1,6 @@
 # Data Science Notebooks
 
-A collection of Jupyter notebooks from data science courses, training projects and personal practice. They cover **data cleaning and wrangling with pandas**, **exploratory and geographic visualization** (matplotlib, seaborn, Plotly, GeoPandas), **statistics** (confidence intervals, correlation, R², t-tests), **clustering** (K-means with elbow and silhouette methods), small **machine learning** experiments (support vector regression), and network-traffic and malware data preparation. Many course notebooks have **Spanish** narration and comments.
+A collection of Jupyter notebooks from data science courses, training projects and personal practice. They cover **data cleaning and wrangling with pandas**, **exploratory and geographic visualization** (matplotlib, seaborn, Plotly, GeoPandas), **statistics** (confidence intervals, correlation, R²), **clustering** (K-means with elbow and silhouette methods), small **machine learning** experiments (support vector regression), and network-traffic and malware data preparation. Many course notebooks have **Spanish** narration and comments.
 
 Each folder has its own README with detailed notes for every notebook:
 
@@ -48,7 +48,6 @@ Each folder has its own README with detailed notes for every notebook:
 | [zeek_conn_log_data_cleaning](misc/zeek_conn_log_data_cleaning.ipynb) | Cleaning a labeled Zeek connection log | Column split, drop IDs/constants, NaN placeholders | pandas |
 | [malware_pe_dataset_exploration](misc/malware_pe_dataset_exploration.ipynb) | PE-header malware dataset exploration | Derived column, sorting | pandas |
 | [coefficient_of_determination](misc/coefficient_of_determination.ipynb) / [coefficient_of_determination_short](misc/coefficient_of_determination_short.ipynb) | Coefficient of determination | `LinearRegression`, manual R² | scikit-learn |
-| [data_analysis_exam](misc/data_analysis_exam.ipynb) | Exam: letter grades, t-test | `melt`, `unstack`, `ttest_ind` | pandas, scipy |
 | [kmeans_goodness_of_fit](misc/kmeans_goodness_of_fit.ipynb) | K-means elbow and silhouette methods | Inertia, `silhouette_score` | scikit-learn |
 | [amazon_stock_svr](misc/amazon_stock_svr.ipynb) | AMZN close-price SVR (April 2022) | Linear and RBF `SVR` | scikit-learn |
 | [gapminder_health_vs_wealth](misc/gapminder_health_vs_wealth.ipynb) | Gapminder bubble chart, 2007 and 2011 | seaborn, `melt`/`merge`, annotations | seaborn, pandas |
@@ -67,7 +66,6 @@ Each folder has its own README with detailed notes for every notebook:
 
 - **Titanic ages:** 95% CI for survivors minus non-survivors = **[−4.47, −0.10]** years (survivor mean 28.34 vs. 30.63).
 - **Buildings regression (`coefficient_of_determination`):** height vs. stories, **R² = 0.904**, r = 0.951.
-- **Exam t-test:** semester grade means 71.19 vs. 72.44, **p = 0.772**.
 - **K-means silhouette:** 0.558 (3 blobs, k = 3), 0.378 (uniform data, k = 3).
 
 ---
@@ -87,7 +85,7 @@ Each folder has its own README with detailed notes for every notebook:
 **Referenced but not included.** The full per-notebook list is in each folder's README. Main examples:
 - `conn.log.labeled`, `kaggle-data.csv`, `AMZN20233.csv`
 - the Gapminder CSVs, `happiness_2017.csv`
-- `ConfirmedFSMarch2023.csv`, `us-counties-2020.csv` / `us-counties-2021.csv`, `index.txt`, `data_B.csv`
+- `ConfirmedFSMarch2023.csv`, `us-counties-2020.csv` / `us-counties-2021.csv`, `index.txt`
 
 Where a notebook names its source, the folder README links to it.
 

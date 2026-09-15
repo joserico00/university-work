@@ -3,7 +3,7 @@
 A mixed collection of notebooks, grouped below by theme:
 
 - **network traffic and malware** dataset preparation
-- statistics exercises (**correlation, R², t-test, K-means goodness of fit**)
+- statistics exercises (**correlation, R², K-means goodness of fit**)
 - visualization work (**Gapminder bubble chart, World Happiness choropleths**)
 - pandas/NumPy practice and a few quick experiments
 
@@ -23,7 +23,6 @@ The Intro to HPC Bootcamp notebooks that used to be here now have their own repo
 | **Statistics and modeling** | | | |
 | [coefficient_of_determination](coefficient_of_determination.ipynb) | Coefficient of determination (R²) | `LinearRegression`, `score`, manual R², correlation | scikit-learn, pandas |
 | [coefficient_of_determination_short](coefficient_of_determination_short.ipynb) | R² (shorter version) | `LinearRegression`, `corr` | scikit-learn, pandas |
-| [data_analysis_exam](data_analysis_exam.ipynb) | Exam: grades by semester, t-test, regression reshape question | `apply` grade function, `melt`, `groupby().unstack`, `ttest_ind`, bar and pie charts | pandas, scipy, matplotlib |
 | [kmeans_goodness_of_fit](kmeans_goodness_of_fit.ipynb) | K-means goodness of fit | Inertia/elbow method, silhouette score over k | scikit-learn, matplotlib |
 | [amazon_stock_svr](amazon_stock_svr.ipynb) | Predicting AMZN closing price with support vector regression | `SVR(kernel='linear')`, `SVR(kernel='rbf')`, `train_test_split` | scikit-learn, pandas |
 | **Visualization** | | | |
@@ -73,19 +72,6 @@ The same log format is modeled with a Transformer in the author's `deep-learning
 
 ### coefficient_of_determination_short.ipynb
 A shorter version: the exact °F→°C fit (slope 0.5556, r = 1.0) and the buildings regression with **R² = 0.9036, r = 0.9506**. It reads `index.txt` from the notebook's folder.
-
-### data_analysis_exam.ipynb
-An exam notebook in Spanish from a data-analysis tools course.
-1. **Written question:** the difference between the correlation coefficient and the coefficient of determination.
-2. **Grades** (`data_B.csv`, not included, holds two semesters of numeric grades stacked in one column):
-   - Splits the semesters into two columns, maps grades to letters A–F with a function, and melts the table.
-   - Counts letters overall. Saved: **A 8, B 8, C 20, D 10, F 11**.
-   - Counts letters per semester. Saved: **A 5/3, B 3/5, C 12/8, D 5/5, F 7/4**.
-   - Compares semester means with `scipy.stats.ttest_ind`. Saved: **71.19 vs. 72.44, t = −0.291, p = 0.772**, so no significant difference.
-   - Plots a grouped bar chart and one pie chart per semester.
-3. **Written question:** why `df['a'].values.reshape(-1, 1)` is needed before `LinearRegression.fit`, answered with a demonstration (`x.ndim == 2`).
-
-Cell 28 uses `grade_counts` where `grado_counts` was meant, so re-running it as saved raises a `NameError`.
 
 ### kmeans_goodness_of_fit.ipynb
 A lesson that continues the K-means introduction:
@@ -156,7 +142,6 @@ Practice following the matplotlib lesson in `coursework/matplotlib_fundamentals.
 | zeek_conn_log_data_cleaning | `../data/raw/conn.log.labeled` |
 | malware_pe_dataset_exploration | `kaggle-data.csv` |
 | coefficient_of_determination, coefficient_of_determination_short | `index.txt` |
-| data_analysis_exam | `data_B.csv` |
 | amazon_stock_svr | `AMZN20233.csv` |
 | gapminder_health_vs_wealth | `gapminder_data.csv`, `gapminder_income_all_years.csv`, `pop.csv`, `lex.csv`, `gdp_pcap.csv`, `ddf--entities--geo--country.csv` |
 | world_happiness_2017_maps | `happiness_2017.csv` ([World Happiness Report](https://worldhappiness.report/)) |

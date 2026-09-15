@@ -18,7 +18,7 @@ Each project is self-contained in its own folder, with a README explaining what 
 
 | Project | Description | Tech |
 |---|---|---|
-| [Data Science Notebooks](data-science/data-science-notebooks/) | Data cleaning and wrangling, exploratory and geographic visualization, statistics (confidence intervals, correlation, t-tests), K-means clustering and small machine learning models. | pandas, matplotlib, seaborn, Plotly, GeoPandas, scikit-learn |
+| [Data Science Notebooks](data-science/data-science-notebooks/) | Data cleaning and wrangling, exploratory and geographic visualization, statistics (confidence intervals, correlation), K-means clustering and small machine learning models. | pandas, matplotlib, seaborn, Plotly, GeoPandas, scikit-learn |
 | [Mental Health & the Economy](data-science/mental-health-suicide-analysis/) | My individual analysis in a group project. It relates U.S. suicide data to inflation and natural disasters, with correlation analysis and a regression model. | pandas, seaborn, SciPy, scikit-learn |
 | [Gapminder D3 Visualization](data-science/gapminder-d3-visualization/) | Interactive bubble chart of fertility vs. life expectancy by country, with population-sized bubbles, a year selector and tooltips. | D3.js, HTML/CSS |
 
