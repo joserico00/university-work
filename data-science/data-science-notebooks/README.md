@@ -1,6 +1,6 @@
 # Data Science Notebooks
 
-A collection of Jupyter notebooks from data science courses, training projects and personal practice. They cover **data cleaning and wrangling with pandas**, **exploratory and geographic visualization** (matplotlib, seaborn, Plotly, GeoPandas/folium), **statistics** (confidence intervals, correlation, R², t-tests), **clustering** (K-means with elbow and silhouette methods), small **machine learning** experiments (support vector regression), and HPC-related work (a power-outage/heatwave analysis run on NERSC Perlmutter and a power-capped fusion-workload scheduler). Many course notebooks have **Spanish** narration and comments.
+A collection of Jupyter notebooks from data science courses, training projects and personal practice. They cover **data cleaning and wrangling with pandas**, **exploratory and geographic visualization** (matplotlib, seaborn, Plotly, GeoPandas), **statistics** (confidence intervals, correlation, R², t-tests), **clustering** (K-means with elbow and silhouette methods), small **machine learning** experiments (support vector regression), and network-traffic and malware data preparation. Many course notebooks have **Spanish** narration and comments.
 
 Each folder has its own README with detailed notes for every notebook:
 
@@ -8,7 +8,7 @@ Each folder has its own README with detailed notes for every notebook:
 |---|---|---|
 | [`coursework/`](coursework/) | pandas data structures, cleaning and wrangling (including an airline-connection search), matplotlib/seaborn/Plotly visualization, the Matplotlib plot-types gallery, a notebook-merging utility | [coursework/README.md](coursework/README.md) |
 | [`confidence-intervals-clustering/`](confidence-intervals-clustering/) | 95% CI for a difference of means (Titanic ages), K-means introduction, silhouette scores | [confidence-intervals-clustering/README.md](confidence-intervals-clustering/README.md) |
-| [`misc/`](misc/) | Heatwave, power-outage and medically vulnerable population project; fusion/HPC workload metrics and scheduler; network-traffic and malware data prep; regression, correlation and exam notebooks; Gapminder and World Happiness visualizations; quick tests | [misc/README.md](misc/README.md) |
+| [`misc/`](misc/) | Network-traffic and malware data prep; regression, correlation and exam notebooks; Gapminder and World Happiness visualizations; quick tests | [misc/README.md](misc/README.md) |
 
 ---
 
@@ -18,73 +18,57 @@ Each folder has its own README with detailed notes for every notebook:
 
 | Notebook | Topic | Techniques | Key libraries |
 |---|---|---|---|
-| [Pandas Data Structures - A](coursework/Pandas%20Data%20Structures%20-%20A.ipynb) | Series/DataFrame basics | Indexing, `%timeit`, NumPy vs. pandas file I/O, add columns/rows | pandas, numpy |
-| [Pandas Data Structures - B](coursework/Pandas%20Data%20Structures%20-%20B.ipynb) | Stats and filtering on a 140-country happiness table | `mean`, `sum(axis)`, `idxmin`, boolean `loc` | pandas |
-| [dataCleaningandWrang](coursework/dataCleaningandWrang.ipynb) | Missing values, duplicates, replacement | `dropna`, `fillna`, `drop_duplicates`, `replace` | pandas, numpy |
-| [dataCleaningandWrang2](coursework/dataCleaningandWrang2.ipynb%20) | Exact duplicate of the above (the file name ends in a space) | none | none |
-| [dataWrang-Asignacion](coursework/dataWrang-Asignacion.ipynb) | Airline schedule cleaning; SJU→TUS one-stop search | `skiprows`/`skipfooter`, header merge, `isin`, `merge` | pandas |
-| [dataWrang-Cont](coursework/dataWrang-Cont.ipynb) | Connection search with time parsing | `to_datetime`, set intersection, min connection time, cross merge | pandas |
-| [dataWrang_Final](coursework/dataWrang_Final.ipynb) | Group-by, pivot, join | `map`, `groupby`, `pivot`, `join` | pandas |
-| [covid dataframe](coursework/covid%20dataframe.ipynb) | U.S. county COVID-19 tables, 2020–2021 | `fillna`, `merge`, `join`, `pivot_table` | pandas |
-| [datascience project](coursework/datascience%20project.ipynb) | CDC suicide data + EM-DAT disasters (project start) | `read_csv`, `read_excel`, xlsx to csv | pandas |
-| [visualization_Part1](coursework/visualization_Part1.ipynb) | matplotlib fundamentals | Subplots, styles, ticks, legends | matplotlib |
-| [Viz3](coursework/Viz3.ipynb) | Color by group, seaborn, Plotly choropleths | `hue`, `px.choropleth`, derived prison-fraction column | seaborn, plotly |
-| [plot_types_jupyter/](coursework/plot_types_jupyter/) | 33 Matplotlib gallery notebooks | basic, arrays, stats, unstructured, 3D | matplotlib |
-| [union](coursework/union.ipynb) / [unionlibrary.py](coursework/unionlibrary.py) | Concatenate notebooks in a folder | `nbformat` | nbformat |
+| [pandas_series_and_dataframes](coursework/pandas_series_and_dataframes.ipynb) | Series/DataFrame basics | Indexing, `%timeit`, NumPy vs. pandas file I/O, add columns/rows | pandas, numpy |
+| [pandas_statistics_and_filtering](coursework/pandas_statistics_and_filtering.ipynb) | Stats and filtering on a 140-country happiness table | `mean`, `sum(axis)`, `idxmin`, boolean `loc` | pandas |
+| [data_cleaning_missing_values_duplicates](coursework/data_cleaning_missing_values_duplicates.ipynb) | Missing values, duplicates, replacement | `dropna`, `fillna`, `drop_duplicates`, `replace` | pandas, numpy |
+| [airline_schedule_wrangling_assignment](coursework/airline_schedule_wrangling_assignment.ipynb) | Airline schedule cleaning; SJU→TUS one-stop search | `skiprows`/`skipfooter`, header merge, `isin`, `merge` | pandas |
+| [airline_connections_wrangling](coursework/airline_connections_wrangling.ipynb) | Connection search with time parsing | `to_datetime`, set intersection, min connection time, cross merge | pandas |
+| [groupby_pivot_join](coursework/groupby_pivot_join.ipynb) | Group-by, pivot, join | `map`, `groupby`, `pivot`, `join` | pandas |
+| [covid_county_cases](coursework/covid_county_cases.ipynb) | U.S. county COVID-19 tables, 2020–2021 | `fillna`, `merge`, `join`, `pivot_table` | pandas |
+| [suicide_disasters_project_start](coursework/suicide_disasters_project_start.ipynb) | CDC suicide data + EM-DAT disasters (project start) | `read_csv`, `read_excel`, xlsx to csv | pandas |
+| [matplotlib_fundamentals](coursework/matplotlib_fundamentals.ipynb) | matplotlib fundamentals | Subplots, styles, ticks, legends | matplotlib |
+| [seaborn_plotly_choropleths](coursework/seaborn_plotly_choropleths.ipynb) | Color by group, seaborn, Plotly choropleths | `hue`, `px.choropleth`, derived prison-fraction column | seaborn, plotly |
+| [matplotlib_plot_types/](coursework/matplotlib_plot_types/) | 31 Matplotlib gallery notebooks | basic, arrays, stats, unstructured, 3D | matplotlib |
+| [merge_notebooks](coursework/merge_notebooks.ipynb) / [merge_notebooks.py](coursework/merge_notebooks.py) | Concatenate notebooks in a folder | `nbformat` | nbformat |
 | [merged_notebook](coursework/merged_notebook.ipynb), [merged_notebookpart1](coursework/merged_notebookpart1.ipynb) | Auto-generated concatenations of the notebooks above | none | none |
 
 ### `confidence-intervals-clustering/`
 
 | Notebook | Topic | Techniques | Key libraries |
 |---|---|---|---|
-| [confInt _ and_Cluster](confidence-intervals-clustering/confInt%20_%20and_Cluster.ipynb) | CI for difference of mean ages; K-means intro | z-interval, `make_blobs`, `KMeans` | scipy, scikit-learn |
-| [silkmeans](confidence-intervals-clustering/silkmeans.ipynb) | Silhouette score (errored in the saved run) | `KMeans`, `silhouette_score` | scikit-learn |
-| [silkmeans-Copy1](confidence-intervals-clustering/silkmeans-Copy1.ipynb) | Silhouette on uniform random data (different code, not a copy) | `KMeans`, `silhouette_score` | scikit-learn |
-| [silkmeansresults](confidence-intervals-clustering/silkmeansresults.ipynb) | Silhouette score over k = 2 to 9 | `KMeans`, `silhouette_score` | scikit-learn |
+| [confidence_intervals_and_kmeans](confidence-intervals-clustering/confidence_intervals_and_kmeans.ipynb) | CI for difference of mean ages; K-means intro | z-interval, `make_blobs`, `KMeans` | scipy, scikit-learn |
+| [silhouette_score_first_attempt](confidence-intervals-clustering/silhouette_score_first_attempt.ipynb) | Silhouette score (errored in the saved run) | `KMeans`, `silhouette_score` | scikit-learn |
+| [silhouette_score_uniform_data](confidence-intervals-clustering/silhouette_score_uniform_data.ipynb) | Silhouette on uniform random data | `KMeans`, `silhouette_score` | scikit-learn |
+| [silhouette_choosing_k](confidence-intervals-clustering/silhouette_choosing_k.ipynb) | Silhouette score over k = 2 to 9 | `KMeans`, `silhouette_score` | scikit-learn |
 
 ### `misc/`
 
 | Notebook | Topic | Techniques | Key libraries |
 |---|---|---|---|
-| [1_Exploring_Datasets](misc/1_Exploring_Datasets.ipynb) | Heatwave project: Google Sheets guide | Markdown only | none |
-| [2_Python_Pandas_Intro](misc/2_Python_Pandas_Intro.ipynb) | Heatwave project: pandas tutorial | `loc`, plots, FIPS `merge` | pandas |
-| [3_Time_Series_Data](misc/3_Time_Series_Data.ipynb) | Heatwave project: EAGLE-i outage time series | Up-sampling with `interp1d`, `groupby().agg` | pandas, scipy |
-| [4_CorrelationAnalysis](misc/4_CorrelationAnalysis.ipynb) | Heatwave project: correlation tutorial | Spearman, p-values, correlation heatmap | scipy, seaborn |
-| [5_Drawing_Maps](misc/5_Drawing_Maps.ipynb) | Heatwave project: county maps | `sjoin`, `explore()` | geopandas, folium |
-| [6_MPI_Intro](misc/6_MPI_Intro.ipynb) | Heatwave project: pointer to mpi4py exercises | Markdown only | none |
-| [7_Big_Questions](misc/7_Big_Questions.ipynb) | Heatwave project: research questions | Markdown only | none |
-| [realwork](misc/realwork.ipynb) | **Author's heatwave, outage and DME analysis** (NERSC Perlmutter) | Heatwave vs. baseline, Spearman tests, maps | pandas, scipy, geopandas |
-| [CleanedmergedDataset](misc/CleanedmergedDataset.ipynb) | Fusion/non-fusion project energy metrics | Derived kWh/science/cost, key-based outer merge | pandas |
-| [CleanedDataset](misc/CleanedDataset.ipynb) | Near-duplicate of CleanedmergedDataset | none | pandas |
-| [scheduler](misc/scheduler.ipynb) | Greedy fusion-job scheduler under a 4.8 MW cap | Priority score, cycle packing, timeline charts | pandas, matplotlib |
-| [simpleIntroToVisualization](misc/simpleIntroToVisualization.ipynb) | Scientific computing and visualization tutorial | NumPy, pandas, matplotlib, 3D, animation, GeoPandas | numpy, pandas, matplotlib |
-| [1-initial-data-cleaning](misc/1-initial-data-cleaning.ipynb) | Cleaning a labeled Zeek connection log | Column split, drop IDs/constants, NaN placeholders | pandas |
-| [Malwaredataset](misc/Malwaredataset.ipynb) | PE-header malware dataset exploration | Derived column, sorting | pandas |
-| [coefDet](misc/coefDet.ipynb) / [coefDet2](misc/coefDet2.ipynb) | Coefficient of determination | `LinearRegression`, manual R² | scikit-learn |
-| [data-analysis-exam](misc/data-analysis-exam.ipynb) | Exam: letter grades, t-test | `melt`, `unstack`, `ttest_ind` | pandas, scipy |
-| [cluster_goodOfFit](misc/cluster_goodOfFit.ipynb) | K-means elbow and silhouette methods | Inertia, `silhouette_score` | scikit-learn |
-| [AmazonStockSVM](misc/AmazonStockSVM.ipynb) | AMZN close-price SVR (April 2022) | Linear and RBF `SVR` | scikit-learn |
-| [JoseHWGapminder](misc/JoseHWGapminder.ipynb) | Gapminder bubble chart, 2007 and 2011 | seaborn, `melt`/`merge`, annotations | seaborn, pandas |
-| [happyness](misc/happyness.ipynb) | World Happiness Report 2017 choropleths | GeoPandas merge, normalization | geopandas |
-| [visualization](misc/visualization.ipynb) | matplotlib subplot practice | `add_subplot`, `subplots` | matplotlib |
-| [pandas data structure](misc/pandas%20data%20structure.ipynb) | Series/DataFrame practice | Indexing, file I/O | pandas |
-| [clase de marzo 1 2023](misc/clase%20de%20marzo%201%202023.ipynb) | In-class airline schedule wrangling | `skiprows`/`skipfooter`, filtering | pandas |
-| [datascience](misc/datascience.ipynb) | xlsx to csv; NumPy stats | `read_excel`, `np.std` | pandas, numpy |
-| [Biopython testing](misc/Biopython%20testing.ipynb) | Quick Biopython test | `Seq.complement` | biopython |
-| [stockpredicate](misc/stockpredicate.ipynb) | Running median of simulated prices (no prediction) | Timed loop | numpy |
-| [student-merge.R](misc/student-merge.R) | Merge two student CSVs in R | `merge` | base R |
+| [zeek_conn_log_data_cleaning](misc/zeek_conn_log_data_cleaning.ipynb) | Cleaning a labeled Zeek connection log | Column split, drop IDs/constants, NaN placeholders | pandas |
+| [malware_pe_dataset_exploration](misc/malware_pe_dataset_exploration.ipynb) | PE-header malware dataset exploration | Derived column, sorting | pandas |
+| [coefficient_of_determination](misc/coefficient_of_determination.ipynb) / [coefficient_of_determination_short](misc/coefficient_of_determination_short.ipynb) | Coefficient of determination | `LinearRegression`, manual R² | scikit-learn |
+| [data_analysis_exam](misc/data_analysis_exam.ipynb) | Exam: letter grades, t-test | `melt`, `unstack`, `ttest_ind` | pandas, scipy |
+| [kmeans_goodness_of_fit](misc/kmeans_goodness_of_fit.ipynb) | K-means elbow and silhouette methods | Inertia, `silhouette_score` | scikit-learn |
+| [amazon_stock_svr](misc/amazon_stock_svr.ipynb) | AMZN close-price SVR (April 2022) | Linear and RBF `SVR` | scikit-learn |
+| [gapminder_health_vs_wealth](misc/gapminder_health_vs_wealth.ipynb) | Gapminder bubble chart, 2007 and 2011 | seaborn, `melt`/`merge`, annotations | seaborn, pandas |
+| [world_happiness_2017_maps](misc/world_happiness_2017_maps.ipynb) | World Happiness Report 2017 choropleths | GeoPandas merge, normalization | geopandas |
+| [matplotlib_subplots_practice](misc/matplotlib_subplots_practice.ipynb) | matplotlib subplot practice | `add_subplot`, `subplots` | matplotlib |
+| [pandas_data_structures_practice](misc/pandas_data_structures_practice.ipynb) | Series/DataFrame practice | Indexing, file I/O | pandas |
+| [airline_schedule_in_class](misc/airline_schedule_in_class.ipynb) | In-class airline schedule wrangling | `skiprows`/`skipfooter`, filtering | pandas |
+| [xlsx_to_csv_and_numpy_stats](misc/xlsx_to_csv_and_numpy_stats.ipynb) | xlsx to csv; NumPy stats | `read_excel`, `np.std` | pandas, numpy |
+| [biopython_sequence_test](misc/biopython_sequence_test.ipynb) | Quick Biopython test | `Seq.complement` | biopython |
+| [streaming_median_prices](misc/streaming_median_prices.ipynb) | Running median of simulated prices | Timed loop | numpy |
+| [merge_student_data.R](misc/merge_student_data.R) | Merge two student CSVs in R | `merge` | base R |
 
 ---
 
 ## Selected results (from saved outputs)
 
 - **Titanic ages:** 95% CI for survivors minus non-survivors = **[−4.47, −0.10]** years (survivor mean 28.34 vs. 30.63).
-- **Heatwave project (`realwork`):** Spearman rho between June 2016 DME-reliant population and mean outages during June 19–20 across Southwest counties = **0.827 (p = 6.2 × 10⁻⁷)**. Hottest county temperature was **102.1 °F** (Yuma and La Paz, AZ, June 20).
-- **Movies tutorial:** Spearman(gross profit, box-office multiplier) = **0.839 (p = 7.3 × 10⁻⁶)**. Spearman(budget, gross profit) = −0.164 (p = 0.50).
-- **Buildings regression (`coefDet`):** height vs. stories, **R² = 0.904**, r = 0.951.
+- **Buildings regression (`coefficient_of_determination`):** height vs. stories, **R² = 0.904**, r = 0.951.
 - **Exam t-test:** semester grade means 71.19 vs. 72.44, **p = 0.772**.
 - **K-means silhouette:** 0.558 (3 blobs, k = 3), 0.378 (uniform data, k = 3).
-- **Fusion scheduler:** 153 CPU/GPU/HYBRID jobs packed under 4.8 MW, from 2025-08-15 09:00 to 2025-08-17 05:07 (UTC−5).
 
 ---
 
@@ -101,8 +85,6 @@ Each folder has its own README with detailed notes for every notebook:
 | `confidence-intervals-clustering/titanic_data.csv` | Titanic passengers with recorded age (714 rows) |
 
 **Referenced but not included.** The full per-notebook list is in each folder's README. Main examples:
-- the heatwave project `data/` folder: EAGLE-i outages, county temperatures, HHS emPOWER workbook, population, demographics
-- fusion/NERSC project CSVs
 - `conn.log.labeled`, `kaggle-data.csv`, `AMZN20233.csv`
 - the Gapminder CSVs, `happiness_2017.csv`
 - `ConfirmedFSMarch2023.csv`, `us-counties-2020.csv` / `us-counties-2021.csv`, `index.txt`, `data_B.csv`
@@ -115,17 +97,17 @@ Where a notebook names its source, the folder README links to it.
 
 ```bash
 pip install jupyter pandas numpy scipy matplotlib seaborn scikit-learn plotly \
-            openpyxl geopandas folium nbformat biopython
+            openpyxl geopandas nbformat biopython
 ```
 
-For `misc/student-merge.R`, base R is enough.
+For `misc/merge_student_data.R`, base R is enough.
 
 **Version notes**
-- `DataFrame.append` (in `coursework/Pandas Data Structures - A` and `misc/coefDet`) was removed in **pandas 2.0**. Use pandas < 2 or replace it with `pd.concat`.
-- `gpd.datasets.get_path('naturalearth_lowres')` (in `misc/happyness` and `misc/simpleIntroToVisualization`) was removed in **GeoPandas 1.0**. Use geopandas < 1 or load Natural Earth separately.
+- `DataFrame.append` (in `coursework/pandas_series_and_dataframes` and `misc/coefficient_of_determination`) was removed in **pandas 2.0**. Use pandas < 2 or replace it with `pd.concat`.
+- `gpd.datasets.get_path('naturalearth_lowres')` (in `misc/world_happiness_2017_maps`) was removed in **GeoPandas 1.0**. Use geopandas < 1 or load Natural Earth separately.
 - `KMeans(n_init='auto')` needs scikit-learn ≥ 1.2.
 - `fillna(method=...)` is deprecated in recent pandas.
-- No GPU is needed. `misc/JoseHWGapminder` and `misc/AmazonStockSVM` carry Colab metadata but do not mount Google Drive. `misc/realwork` was run on NERSC Perlmutter, but it runs on any machine with the data.
+- No GPU is needed. `misc/gapminder_health_vs_wealth` and `misc/amazon_stock_svr` carry Colab metadata but do not mount Google Drive.
 
 ## How to run
 
@@ -135,15 +117,18 @@ cd data-science-notebooks
 jupyter lab
 ```
 
-1. Open a notebook from the folder it lives in, because relative paths such as `suicides.csv` or `data/...` assume that working directory.
+1. Open a notebook from the folder it lives in, because relative paths such as `suicides.csv` or `index.txt` assume that working directory.
 2. Put any missing data files at the paths listed in that folder's README.
 3. Data paths in the notebooks are relative (for example `datasets/iris.csv`, `ranDat.csv`, `index.txt`), so they resolve against the notebook's own folder.
 4. Several notebooks have saved errors or cells that were executed out of order. These are noted per notebook in the folder READMEs.
 
-## Related
+## Related repositories
 
-- The fusion-workload notebooks in `misc/` go with Module 5 of the author's `hpc-bootcamp-2025` repository.
-- `misc/1-initial-data-cleaning.ipynb` prepares the same connection-log format that is modeled with a Transformer in the author's `deep-learning-coursework` repository.
+The Intro to HPC Bootcamp notebooks that used to be in `misc/` now have their own repositories:
+- [Intro-to-HPC-Bootcamp-2023-Power-Outages](https://github.com/joserico00/Intro-to-HPC-Bootcamp-2023-Power-Outages): the author's project from the 2023 bootcamp (ORNL "Power Outages and Socioeconomics" track): heatwave, power-outage and medically vulnerable population tutorials and analysis.
+- [Intro-to-HPC-Bootcamp-2025-Fusion-Energy-Workloads](https://github.com/joserico00/Intro-to-HPC-Bootcamp-2025-Fusion-Energy-Workloads): fusion-workload energy metrics and a power-capped job scheduler from the 2025 bootcamp.
+
+In addition, `misc/zeek_conn_log_data_cleaning.ipynb` prepares the same connection-log format that is modeled with a Transformer in the author's `deep-learning-coursework` repository.
 
 ## Author
 

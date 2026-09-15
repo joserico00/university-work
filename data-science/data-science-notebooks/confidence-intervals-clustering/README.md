@@ -8,16 +8,16 @@ A lesson notebook with two parts: a **95% confidence interval for the difference
 
 | Notebook | Topic | Techniques | Key libraries |
 |---|---|---|---|
-| [confInt _ and_Cluster](confInt%20_%20and_Cluster.ipynb) | CI for a difference of means; K-means intro | z-interval with sample standard deviations, `make_blobs`, `KMeans`, centroid plots | pandas, numpy, scipy, scikit-learn, matplotlib |
-| [silkmeans](silkmeans.ipynb) | Silhouette score (first attempt) | `make_blobs`, `KMeans`, `silhouette_score` | scikit-learn |
-| [silkmeans-Copy1](silkmeans-Copy1.ipynb) | Silhouette score on uniform random data | `KMeans(n_clusters=3)`, `silhouette_score`, centroid plot | scikit-learn, numpy, matplotlib |
-| [silkmeansresults](silkmeansresults.ipynb) | Silhouette score and choosing *k* | `KMeans` for k = 2 to 9, silhouette curve | scikit-learn, matplotlib |
+| [confidence_intervals_and_kmeans](confidence_intervals_and_kmeans.ipynb) | CI for a difference of means; K-means intro | z-interval with sample standard deviations, `make_blobs`, `KMeans`, centroid plots | pandas, numpy, scipy, scikit-learn, matplotlib |
+| [silhouette_score_first_attempt](silhouette_score_first_attempt.ipynb) | Silhouette score (first attempt) | `make_blobs`, `KMeans`, `silhouette_score` | scikit-learn |
+| [silhouette_score_uniform_data](silhouette_score_uniform_data.ipynb) | Silhouette score on uniform random data | `KMeans(n_clusters=3)`, `silhouette_score`, centroid plot | scikit-learn, numpy, matplotlib |
+| [silhouette_choosing_k](silhouette_choosing_k.ipynb) | Silhouette score and choosing *k* | `KMeans` for k = 2 to 9, silhouette curve | scikit-learn, matplotlib |
 
 **Data:** [`titanic_data.csv`](titanic_data.csv) is **included**. It has 714 passengers, all with a recorded age, and the columns `PassengerId, Survived, Pclass, Name, Sex, Age, SibSp, Parch, Ticket, Fare, Embarked`. The other data is generated in the notebooks with `make_blobs` or `np.random`.
 
 ---
 
-## confInt _ and_Cluster.ipynb
+## confidence_intervals_and_kmeans.ipynb
 
 ### Part 1 — Confidence interval for a difference of means
 1. Loads `titanic_data.csv` and prints mean ages. Saved values: **all passengers 29.70**, **survivors 28.34** (n = 290), **non-survivors 30.63** (n = 424).
@@ -36,19 +36,19 @@ A lesson notebook with two parts: a **95% confidence interval for the difference
 
 `make_blobs` is called without `random_state`, so points and centroids change on every run.
 
-## silkmeans.ipynb
+## silhouette_score_first_attempt.ipynb
 
 Generates 300 points from 4 blobs (`random_state=0`) and fits `KMeans(n_clusters=4)`. **The saved run failed at `kmeans.predict(X)`** with `AttributeError: 'NoneType' object has no attribute 'split'`. This is an environment error (a known problem with older `threadpoolctl` versions used by scikit-learn), not a bug in the notebook's code. The silhouette cells after it were never executed.
 
-## silkmeans-Copy1.ipynb
+## silhouette_score_uniform_data.ipynb
 
-Despite its name, this is **not a copy** of *silkmeans*. It uses different code:
+A separate silhouette example with different code from *silhouette_score_first_attempt*:
 - 100 uniform random 2-D points (`np.random.seed(0)`) and `KMeans(n_clusters=3, random_state=0)`.
 - Computes the silhouette score and plots the clusters with their centers.
 
 **Saved result:** silhouette score **0.378**.
 
-## silkmeansresults.ipynb
+## silhouette_choosing_k.ipynb
 
 1. 200 points from 3 blobs (`cluster_std=1.5`) and `KMeans(n_clusters=3)`. **Saved result:** average silhouette score **0.558**. Scatter plot with centroids.
 2. Fits K-means for k = 2 to 9 and plots the average silhouette score against the number of clusters.
@@ -62,7 +62,7 @@ Despite its name, this is **not a copy** of *silkmeans*. It uses different code:
 pip install pandas numpy scipy scikit-learn matplotlib seaborn jupyter
 ```
 
-`n_init='auto'` requires scikit-learn 1.2 or newer. If *silkmeans* raises the `'NoneType' object has no attribute 'split'` error, upgrade `threadpoolctl`.
+`n_init='auto'` requires scikit-learn 1.2 or newer. If *silhouette_score_first_attempt* raises the `'NoneType' object has no attribute 'split'` error, upgrade `threadpoolctl`.
 
 ## Author
 

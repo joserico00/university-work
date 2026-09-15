@@ -21,12 +21,13 @@ Each project is self-contained in its own folder, with a README explaining what 
 | [Mental Health & the Economy](data-science/mental-health-suicide-analysis/) | My individual analysis in a group project. It relates U.S. suicide data to inflation and natural disasters, with correlation analysis and a regression model. | pandas, seaborn, SciPy, scikit-learn |
 | [Gapminder D3 Visualization](data-science/gapminder-d3-visualization/) | Interactive bubble chart of fertility vs. life expectancy by country, with population-sized bubbles, a year selector and tooltips. | D3.js, HTML/CSS |
 
-### Machine Learning & HPC
+### Machine Learning
 
 | Project | Description | Tech |
 |---|---|---|
-| [Deep Learning Coursework](machine-learning-and-hpc/deep-learning-coursework/) | Softmax regression on Fashion-MNIST, plus a Transformer-encoder classifier that separates benign from malicious network connections. | PyTorch, d2l, TensorFlow/Keras |
-| [HPC Bootcamp 2025](machine-learning-and-hpc/hpc-bootcamp-2025/) | Notebooks from the NERSC / DOE Introduction to HPC Bootcamp: hardware power use, TOP500 performance and energy efficiency, and a fusion-energy workload project. | Python, pandas, Jupyter, HPC |
+| [Deep Learning Coursework](machine-learning/deep-learning-coursework/) | Softmax regression on Fashion-MNIST, plus a Transformer-encoder classifier that separates benign from malicious network connections. | PyTorch, d2l, TensorFlow/Keras |
+
+My high performance computing bootcamp projects have their own repositories. See [Related repositories](#related-repositories).
 
 ### Systems & Algorithms
 
@@ -61,6 +62,8 @@ These team projects live in private class organization repositories, so they are
 
 - [NVSRCO](https://github.com/joserico00/NVSRCO): Network Vulnerability Scanner for Resource-Constrained Organizations (graduate project)
 - [Deep Learning for Malicious Traffic Detection](https://github.com/joserico00/Deep-Learning-for-Malicious-Traffic-Detection)
+- [Intro to HPC Bootcamp 2023: Power Outages](https://github.com/joserico00/Intro-to-HPC-Bootcamp-2023-Power-Outages): how the June 2016 Southwest heatwave and power outages affected people who rely on electricity-dependent medical equipment, analyzed on NERSC Perlmutter
+- [Intro to HPC Bootcamp 2025: Fusion Energy Workloads](https://github.com/joserico00/Intro-to-HPC-Bootcamp-2025-Fusion-Energy-Workloads): power consumption, TOP500 energy efficiency, and fusion workload energy metrics with a 4.8 MW job scheduler
 - [Seniory](https://github.com/joserico00/Seniory): elder care desktop app built for a hackathon
 
 ## Notes
