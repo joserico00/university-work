@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Based on https://observablehq.com/@uwdata/introduction-to-d3-part-2 -->
+
+<!-- Load d3.js. make sure to use v5 or more for proper csv loading -->
+<script src="https://d3js.org/d3.v5.js"></script>
+
+<script>
+
+function init() {
+  
+  margin = ({top: 10, right: 10, bottom: 20, left: 20})
+
+  width = 600
+  height = 400
+
+  // // create the container SVG element
+  svg = d3.select('#my_dataviz')
+    .append('svg')
+      .attr('width', width)
+      .attr('height', height)
+      .style('border','1px solid blue')
+  var tooltip = d3.select("#tooltip")
+
+  d3.csv('gapminder.csv', function(d) {d.pop=+d.pop; return d})
+    .then(function(_data) { data=_data; build(data) })
+  
+  
+  
+}
+
+
+function build(data) {
+
+  years = d3.extent(data, d => d.year)
+
+  dataInitial = data.filter(d => d.year === years[0])
+
+  x = d3.scaleLinear()
+    .domain([0, d3.max(data, d => d.fertility)])
+    .range([margin.left, width - margin.right])
+    .nice()
+
+  y = d3.scaleLinear()
+    .domain([0, d3.max(data, d => d.life_expect)])
+    .range([height - margin.bottom, margin.top])
+    .nice()
+
+/// color = d3.scaleOrdinal()
+  var color = d3.scaleOrdinal()
+    .domain([0, 1, 2, 3, 4, 5])
+    .range(["red", "yellow", "blue", "green", "red", "red"]); 
+
+  var radiusScale = d3.scaleThreshold()
+    .domain([1000000, 10000000, 100000000, 1000000000]) 
+    .range([3, 6, 12, 24]); 
+
+// size = d3.scaleSqrt()
+
+// const selmodel = SelectionModel();
+
+  svg.append('g')
+    .attr('transform', `translate(0, ${height - margin.bottom})`)
+    .call(d3.axisBottom(x))
+    .append('text')
+      .attr('text-anchor', 'end')
+      .attr('fill', 'black')
+      .attr('font-size', '12px')
+      .attr('font-weight', 'bold')
+      .attr('x', width - margin.right)
+      .attr('y', -10)
+      .text('Fertility');
+
+  svg.append('g')
+    .attr('transform', `translate(${margin.left}, 0)`)
+    .call(d3.axisLeft(y))
+    .append('text')
+      .attr('transform', `translate(20, ${margin.top}) rotate(-90)`)
+      .attr('text-anchor', 'end')
+      .attr('fill', 'black')
+      .attr('font-size', '12px')
+      .attr('font-weight', 'bold')
+      .text('Life Expectancy');
+  
+  yearLabel = svg.append('text')
+    .attr('class', 'year')
+    .attr('x', 40)
+    .attr('y', height - margin.bottom - 20)
+    .attr('fill', '#ccc')
+    .attr('font-family', 'Helvetica Neue, Arial')
+    .attr('font-weight', 500)
+    .attr('font-size', 80)
+    .text(years[0]);
+  
+  // svg.append('g')
+  //   .attr('transform', `translate(${width - margin.right - 150}, 10)`)
+  //   .call(container => legend(container, selmodel));
+  
+  let countries = svg
+    .selectAll('circle.country')
+    .data(data.filter(d => d.year === years[0]), d => d.country)
+    .join('circle')
+      .attr('class', 'country')
+      .sort((a, b) => b.pop - a.pop)
+      .attr('opacity', 0.75)
+      .attr('fill', d => color(d.cluster))
+      .attr('cx', d => x(d.fertility))  
+      .attr('cy', d => y(d.life_expect))
+      .attr('r', d => radiusScale(d.pop))
+      .on("mouseover", function(d) {
+        tooltip.html("Country: " + d.country + "<br>" +
+                     "Population: " + d.pop + "<br>" +
+                     "Fertility: " + d.fertility + "<br>" +
+                     "Life Expectancy: " + d.life_expect)
+               .style("visibility", "visible");
+    })
+
+      .on("mousemove", function() {
+        var mousePosition = d3.mouse(this);
+        tooltip.style("top", (mousePosition[1] + 20) + "px")
+              .style("left", (mousePosition[0] + 20) + "px");
+  })
+
+      .on("mouseout", function() {
+        tooltip.style("visibility", "hidden");
+});
+      // Create cicles based on data
+      // Modify to add color based on cluster and radius based on population
+  let labels = svg
+      .selectAll('text.label')
+      .data(data.filter(d => d.year === years[0]), d => d.country)
+      .join('text')
+          .attr('class', 'label')
+          .attr('x', d => x(d.fertility))
+          .attr('y', d => y(d.life_expect) + 15) 
+          .attr('text-anchor', 'middle') 
+          .text(d => d.country) 
+          .attr('font-size', d => getTextSize(d.pop));
+
+
+  //countries
+  //  .on('mouseover', function() {
+   //   console.log("mouseover",this)
+      // Change stroke style when mouse over
+   // })
+   // .on('mouseout', function() {
+   //   console.log("mouseout",this)
+      // Reset stroke style when mouse out
+  //  });
+
+
+  // Add text close to the circles
+
+  function getTextSize(population) {
+    let radius = radiusScale(population);
+    
+    if (radius <= 3) return '4px'; 
+    else if (radius <= 6) return '8px'; 
+    else if (radius <= 12) return '10px'; 
+    else return '14px'; 
+  }
+  function setYear(year) {
+    console.log(`CALLED: setYear(${year})`)
+    yearLabel.text(year);
+
+  
+    // Complete to update circles with changed year
+    let updatedData = data.filter(d => d.year == year);
+    svg.selectAll('circle.country')
+        .data(updatedData, d => d.country)
+        .join(
+            enter => enter.append('circle')
+                           .attr('class', 'country')
+                           .attr('opacity', 0.75)
+                           .attr('fill', d => color(d.cluster)) 
+                           .attr('cx', d => x(d.fertility))
+                           .attr('cy', d => y(d.life_expect))
+                           .attr('r', d => radiusScale(d.pop)), 
+            update => update.call(update => update.transition().duration(500)
+                           .attr('cx', d => x(d.fertility))
+                           .attr('cy', d => y(d.life_expect))
+                           .attr('fill', d => color(d.cluster))), 
+            exit => exit.remove()
+        );
+
+
+    // Add transition from old values to new values
+
+    // Also update the text
+    labels
+    .data(data.filter(d => d.year == year), d => d.country)
+    .join(
+        enter => enter.append('text')
+
+            .attr('x', d => x(d.fertility))
+            .attr('y', d => y(d.life_expect) + 15)
+            .text(d => d.country)
+            .attr('font-size', d => getTextSize(d.pop)),
+        update => update.call(update => update.transition().duration(500)
+            .attr('x', d => x(d.fertility))
+            .attr('y', d => y(d.life_expect) + 15)
+            .text(d => d.country)
+            .attr('font-size', d => getTextSize(d.pop))),
+        exit => exit.remove()
+        );
+
+
+  }
+
+  let options = [...new Set(data.map(d => d.year))]; 
+
+   // Listen to the slider?
+  d3.select("#mySelect")
+    .selectAll('option')
+      .data(options)
+    .enter()
+      .append('option').text(d=>d).attr('value',d=>d)
+  d3.select("#mySelect").on("change", function(d){
+        selectedValue = this.value
+        setYear(selectedValue)
+  })
+}
+
+
+
+
+</script>
+
+<body onload="init()">
+
+<select name="mySelect" id="mySelect"></select>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz" style="border: 1px solid black;"></div>
+
+<div id="tooltip" style="position: absolute; visibility: hidden; pointer-events: none; padding: 8px; background-color: white; border: 1px solid #ddd; border-radius: 4px; text-align: left;"></div>
+
+
+</body>

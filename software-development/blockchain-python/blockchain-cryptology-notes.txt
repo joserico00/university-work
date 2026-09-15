@@ -1,0 +1,73 @@
+BlockChain
+Jose E Rodriguez RIos
+
+What is Blockchain
+Blockchain refers to a specific type of data structure that is used to record transactions across multiple computers in such a way that any involved record cannot be altered retroactively, without the alteration of all subsequent blocks. 
+This structure is secured through the use of cryptography, hence its frequent association with cryptocurrencies.
+Decentralized,Immutable,Transparent,Secure,Smart Contracts,Consensus Mechanisms
+
+Blockchain Structure
+
+Cryptography in Blockchain
+
+Cryptography is an essential component of blockchain technology, providing the foundation for its core characteristics - decentralization, immutability, and transparency. 
+This is achieved through various cryptographic mechanisms including hash functions, digital signatures, and asymmetric key cryptography
+
+Hash Functions
+Hash functions are integral to the operation of blockchains, playing a vital role in ensuring data integrity and the creation of unique identifiers for data elements.
+A hash function is a special type of function used in computing to map data of any size to a fixed size. In other words, it takes an input (or 'message') and returns a fixed-size string of bytes. The output, often a 'digest', is unique to each unique input. Even a minor change to the input will produce a dramatically different output.
+
+Cryptographic Hash Functions
+
+Hash function
+Hash functions in blockchain technology are used to secure data. Each block of transactions in a blockchain is hashed, creating a unique identifier for that block known as a 'hash'. This hash is stored in the block that follows it, creating a chain of blocks - hence the term 'blockchain'.
+
+
+Hahs fuction
+A blockchain's immutability comes from this hash function. If any information in a block is altered, the hash of the block changes as well. Because this hash is stored in the subsequent block, a change in one block will make the entire blockchain invalid. This alerts the network to the change, preventing unauthorized modifications and maintaining the integrity of the blockchain.
+
+Example of hashes
+In the context of cryptocurrencies like Bitcoin, a particular type of hash function called SHA-256 (Secure Hash Algorithm 256) is used. This hash function is used in the creation of Bitcoin addresses, in the proof-of-work consensus mechanism, and for transaction verification.
+
+Digital Signatures
+Digital signatures are cryptographic tools used to verify the authenticity and integrity of data. In a nutshell, a digital signature is a mathematical scheme for verifying the authenticity of digital messages or documents.
+A valid digital signature gives a recipient reason to believe that the message was created by a known sender (authentication), that the sender cannot deny having sent the message (non-repudiation), and that the message was not altered in transit (integrity).
+
+Digital Signatures
+In the blockchain, digital signatures are used to ensure the authenticity and integrity of transactions. They ensure that each transaction is linked to a specific user, and that the transaction has not been tampered with once it's been issued.
+The digital signature process involves two algorithms, one for signing that involves the user's private key, and one for verification that involves the user's public key.
+
+
+Digital signature
+In a transaction, the sender generates a hash of the message, signs it with their private key, and sends both the message and the signature. The recipient then uses the sender's public key to verify the signature.
+If the verification is successful, it gives the recipient assurance that the message was indeed sent by the claimed sender (since only they have access to their private key) and that the message was not tampered with during transmission.
+
+
+Cryptocurrency Transactions
+
+The digital transfers of cryptographic tokens from one individual to another.
+Each transaction involves the sender's address, the recipient's address, the amount of cryptocurrency being transferred, and a digital signature from the sender.
+
+
+Cryptocurrency Transactions
+
+Once a transaction is broadcasted to the network, it must be confirmed by the participants of the network, also known as miners in the context of cryptocurrencies like Bitcoin.
+The miners' role is to confirm the transactions by solving complex mathematical problems. Once a problem is solved, the transaction is added to a "block" which is then added to the blockchain, thus making the transaction immutable and transparent.
+
+
+Blockchain Consensus Mechanisms
+
+The main goal of consensus mechanisms is to confirm and validate transactions, thereby avoiding fraudulent activities and double-spending.
+These mechanisms ensure the integrity and security of the decentralized blockchain system by achieving agreement on each transaction among the net work participants
+
+
+Proof of Work (PoW):
+
+This was the original consensus mechanism used by Bitcoin. In PoW, miners compete to solve a complex mathematical puzzle. The first to solve the puzzle gets to add a new block to the blockchain and receive a reward, typically in the form of the blockchain's native cryptocurrency.
+Despite its security and widespread use, PoW has been criticized for its high energy consumption and tendency to favor centralization due to the significant computational power required.
+
+
+Proof of Stake
+As an alternative to PoW, PoS selects validators to create a new block based on their stake, or the amount of cryptocurrency they hold and are willing to 'lock up' as collateral.
+PoS is generally considered to be more energy-efficient than PoW, but it has its own set of potential issues, including the possibility of centralization among large stakeholders.
+

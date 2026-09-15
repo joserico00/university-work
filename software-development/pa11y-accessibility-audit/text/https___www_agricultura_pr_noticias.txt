@@ -1,0 +1,19 @@
+
+Welcome to Pa11y
+
+ > Running Pa11y on URL https://www.agricultura.pr/noticias
+
+Results for URL: https://www.agricultura.pr/noticias
+
+ • Error: This textinput element does not have a name available to an accessibility API. Valid names are: label element, title undefined, aria-label undefined, aria-labelledby undefined.
+   ├── WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputText.Name
+   ├── #content-wrapper > div:nth-child(1) > div > div > div > div > input
+   └── <input class="m2yAmK blog-desktop-header-search-text-color blog-desktop-header-search-font search-input__input" type="text" placeholder="Search" value="">
+
+ • Error: This form field should be labelled in some way. Use the label element (either with a "for" attribute or wrapped around the form field), or "title", "aria-label" or "aria-labelledby" attributes as appropriate.
+   ├── WCAG2AA.Principle1.Guideline1_3.1_3_1.F68
+   ├── #content-wrapper > div:nth-child(1) > div > div > div > div > input
+   └── <input class="m2yAmK blog-desktop-header-search-text-color blog-desktop-header-search-font search-input__input" type="text" placeholder="Search" value="">
+
+2 Errors
+

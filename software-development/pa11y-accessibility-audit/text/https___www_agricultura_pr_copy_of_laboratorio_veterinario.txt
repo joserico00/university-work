@@ -1,0 +1,29 @@
+
+Welcome to Pa11y
+
+ > Running Pa11y on URL https://www.agricultura.pr/copy-of-laboratorio-veterinario
+
+Results for URL: https://www.agricultura.pr/copy-of-laboratorio-veterinario
+
+ • Error: This element has role of "button" but does not have a name available to an accessibility API. Valid names are: element content, aria-label undefined, aria-labelledby undefined.
+   ├── WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Div.Name
+   ├── #pgi40b3d96e0f274003b388084c03f4cf3c_0
+   └── <div class="gallery-item-container item-container-regular has-custom-focus visible clickable" id="pgi40b3d96e0f274003b388084c03f4cf3c_0" tabindex="0" aria-label="" data-hash="40b3d96e-0f27-4003-b388-084c03f4cf3c" data-id="40b3d96e-0f27-4003-b388-084c...
+
+ • Error: This element has role of "button" but does not have a name available to an accessibility API. Valid names are: element content, aria-label undefined, aria-labelledby undefined.
+   ├── WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Div.Name
+   ├── #pgi4d3384adf47548c6b87603e6fd12a731_1
+   └── <div class="gallery-item-container item-container-regular has-custom-focus visible clickable" id="pgi4d3384adf47548c6b87603e6fd12a731_1" tabindex="-1" aria-label="" data-hash="4d3384ad-f475-48c6-b876-03e6fd12a731" data-id="4d3384ad-f475-48c6-b876-03e...
+
+ • Error: This element has role of "button" but does not have a name available to an accessibility API. Valid names are: element content, aria-label undefined, aria-labelledby undefined.
+   ├── WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Div.Name
+   ├── #pgi749f56a06c3d4b08b0125cfd77a2e892_2
+   └── <div class="gallery-item-container item-container-regular has-custom-focus visible clickable" id="pgi749f56a06c3d4b08b0125cfd77a2e892_2" tabindex="-1" aria-label="" data-hash="749f56a0-6c3d-4b08-b012-5cfd77a2e892" data-id="749f56a0-6c3d-4b08-b012-5cf...
+
+ • Error: This element has role of "button" but does not have a name available to an accessibility API. Valid names are: element content, aria-label undefined, aria-labelledby undefined.
+   ├── WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Div.Name
+   ├── #comp-jpe2k91q
+   └── <div class="comp-jpe2k91q R6ex7N" id="comp-jpe2k91q" role="button" tabindex="0" aria-disabled="false"><div data-testid="linkElement" ...</div>
+
+4 Errors
+

@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="{{ url_for('static', filename = 'js/echarts.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'js/infographic.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'js/'+data+'.js') }}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {box-sizing: border-box}
+
+    /* Style the header */
+    header {
+      background-color: rgb(255, 0, 0);
+      padding: 30px;
+      text-align: center;
+      font-size: 35px;
+      color: white;
+    }
+
+    /* Set height of body and the document to 100% */
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial;
+    }
+
+    /* Style tab links */
+    .tablink {
+      background-color: #555;
+      color: white;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      font-size: 17px;
+      width: 25%;
+    }
+
+    .tablink:hover {
+      background-color: #777;
+    }
+
+    /* Style the tab content (and add height:100% for full page content) */
+    .tabcontent {
+      color: black;
+      display: none;
+      padding: 100px 20px;
+      height: 100%;
+      width: 100%;
+    }
+
+    #main,
+    html,
+    body {
+      width: 100%;
+    }
+    #main {
+      height: 400px;
+    }
+
+    #Home {background-color: white;}
+    #News {background-color: white;}
+    #Contact {background-color: white;}
+    #About {background-color: white;}
+  </style>
+  </head>
+   <header>
+      <h3>Apache Access Logs Visualizer</h3>
+    </header>
+    <body>
+    <button class="tablink" onclick="openPage('Home', this, 'red')" id="defaultOpen">Simple graphics</button>
+    <button class="tablink" onclick="openPage('News', this, 'red')">Linear graphics</button>
+    <button class="tablink" onclick="openPage('Contact', this, 'red')">Comparison graphics</button>
+    <button class="tablink" onclick="openPage('Exponential', this, 'red')">Smoothed graphics</button>
+
+    <div id="Home" class="tabcontent">
+      <h3>Graficas</h3>
+      <div id="main"></div>
+      <script type="text/javascript">
+        // Initialize the echarts instance based on the prepared dom
+        var myChart = echarts.init(document.getElementById('main'), 'infographic');
+        window.onresize = function () {
+          myChart.resize();
+        };
+        
+        // Specify the configuration items and data for the chart
+        var option = {
+          title: {
+            text: 'Logs by dates'
+          },
+          legend: {
+            data: 'logs'
+          },
+          tooltip: {},
+          dataset: {
+            dimensions: dateDimensions,
+            source: dateData
+          },
+          xAxis: { type: 'category' },
+          yAxis: {},
+          series: [{ type: 'bar',
+                    encode: {
+          x: 'date',
+                        y: 'logs'
+                    }
+          }]
+        };
+        // Display the chart using the configuration items and data just specified.
+        myChart.setOption(option);
+      </script>
+
+      <style>
+        #other,
+        html,
+        body {
+          width: 100%;
+        }
+        #other {
+          height: 400px;
+        }
+      </style>
+      <div id="other"></div>
+      <script type="text/javascript">
+        // Initialize the echarts instance based on the prepared dom
+        var myOtherChart = echarts.init(document.getElementById('other'), 'dark');
+        window.onresize = function () {
+          myOtherChart.resize();
+        };
+        
+        // Specify the configuration items and data for the chart
+        var option2 = {
+          title: {
+            text: 'Status Codes by Frequency'
+          },
+          legend: {
+            data: 'logs'
+          },
+          tooltip: {},
+          dataset: {
+            dimensions: sCodesDimensions,
+            source: sCodesData
+          },
+          xAxis: { type: 'category' },
+          yAxis: {},
+          series: [{ type: 'bar',
+                    encode: {
+          x: 'status',
+                        y: 'logs'
+                    }
+          }]
+        };
+        // Display the chart using the configuration items and data just specified.
+        myOtherChart.setOption(option2);
+      </script>
+
+      <style>
+        #time,
+        html,
+        body {
+          width: 100%;
+        }
+        #time {
+          height: 400px;
+        }
+      </style>
+      <div id="time"></div>
+      <script type="text/javascript">
+        // Initialize the echarts instance based on the prepared dom
+        var timeChart = echarts.init(document.getElementById('time'), 'infographics');
+        window.onresize = function () {
+          timeChart.resize();
+        };
+        
+        // Specify the configuration items and data for the chart
+        var option3 = {
+          title: {
+            text: 'Requests per minute'
+          },
+          legend: {
+            data: 'logs'
+          },
+          tooltip: {},
+          dataset: {
+            dimensions: timeDimensions,
+            source: timeData
+          },
+          xAxis: { type: 'category' },
+          yAxis: {},
+          series: [{ type: 'line',
+                    encode: {
+          x: 'time',
+                        y: 'logs'
+                    }
+          }]
+        };
+        // Display the chart using the configuration items and data just specified.
+        timeChart.setOption(option3);
+      </script>
+
+      <style>
+        #methods,
+        html,
+        body {
+          width: 100%;
+        }
+        #methods {
+          height: 400px;
+        }
+      </style>
+      <div id="methods"></div>
+      <script type="text/javascript">
+        // Initialize the echarts instance based on the prepared dom
+        var methodsChart = echarts.init(document.getElementById('methods'), 'infographics');
+        window.onresize = function () {
+          methodsChart.resize();
+        };
+        
+        // Specify the configuration items and data for the chart
+        var option4 = {
+          title: {
+            text: 'Amount of requests by HTTP Method',
+            left: 'right'
+          },
+          legend: {
+            data: 'logs'
+          },
+          tooltip: {},
+          dataset: {
+            dimensions: methodsDimensions,
+            source: methodsData
+          },
+          series: [
+            {
+              name: 'request',
+              type: 'pie',
+              radius: '40%',
+              emphasis: {
+                itemStyle: {
+                  shadowBlur: 10,
+                  shadowOffsetX: 0,
+                  shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+              }
+            }
+          ]
+        };
+        // Display the chart using the configuration items and data just specified.
+        methodsChart.setOption(option4);
+      </script>
+
+      <style>
+        #ipspmin,
+        html,
+        body {
+          width: 100%;
+        }
+        #ipspmin {
+          height: 400px;
+        }
+      </style>
+      <div id="ipspmin"></div>
+      <script type="text/javascript">
+        // Initialize the echarts instance based on the prepared dom
+        var ipsPerMinuteChart = echarts.init(document.getElementById('ipspmin'));
+        window.onresize = function () {
+          ipsand404pmChart.resize();
+          reqand404Chart.resize();
+          repeatedandreqChart.resize();
+          ipsandreqChart.resize();
+          ipsPerMinuteChart.resize();
+          methodsChart.resize();
+          timeChart.resize();
+          myOtherChart.resize();
+          myChart.resize();
+          ipsand404Chart.resize();
+          reprequestsChart.resize();
+          requestsChart.resize();
+          linearipChart.resize();
+        };
+        // Specify the configuration items and data for the chart
+        var option5 = {
+          title: {
+            text: 'IPs per minute'
+          },
+          legend: {
+            data: 'logs'
+          },
+          tooltip: {},
+          dataset: {
+            dimensions: ipsPerMinuteDimensions,
+            source: ipsPerMinuteData
+          },
+          xAxis: { type: 'category' },
+          yAxis: {},
+          series: [{ type: 'line',
+                    encode: {
+          x: 'ipsPerMinute',
+                        y: 'logs'
+                    }
+          }]
+        };
+        // Display the chart using the configuration items and data just specified.
+        ipsPerMinuteChart.setOption(option5);
+      </script>
+    </div>
+
+    <div id="News" class="tabcontent">
+      <h3>Graficas</h3>
+      <style>
+        #linearip,
+        html,
+        body {
+          width: 100%;
+        }
+        #linearip {
+          height: 400px;
+        }
+      </style>
+      <div id="linearip"></div>
+      <script type="text/javascript">
+        // Initialize the echarts instance based on the prepared dom
+        var linearipChart = echarts.init(document.getElementById('linearip'), 'infographic');
+        window.onresize = function () {
+          linearipChart.resize();
+        };
+        var option5 = {
+          tooltip: {
+                  trigger: 'axis',
+                position: function (pt) {
+                  return [pt[0], '10%'];
+                  }
+          },
+          title: {
+                left: 'center',
+                text: 'IPs per minute'
+          },
+          toolbox: {
+                feature: {
+                      dataZoom: {
+                      yAxisIndex: 'none'
+                },
+                restore: {},
+                saveAsImage: {}
+                }
+          },
+          dataset: {
+                dimensions: ipsPerMinuteDimensions,
+                source: ipsPerMinuteData
+              },
+          xAxis: {
+                type: 'category',
+                boundaryGap: false
+        },
+          yAxis: {
+                type: 'value',
+                boundaryGap: [0, '100%']
+          },
+          dataZoom: [
+                {
+                      type: 'inside',
+                      start: 0,
+                      end: 20
+                  },
+                  {
+                      start: 0,
+                      end: 20
+                  }
+              ],
+          series: [
+                  {
+                    name: 'IPs per minute',
+                    type: 'line',
+                    smooth: true,
+                    symbol: 'none',
+                    areaStyle: {},
+            data: ipsPerMinuteData
+                }
+              ]
+        };
+        // Display the chart using the configuration items and data just specified.
+        option5 && linearipChart.setOption(option5);
+      </script>
+      <style>
+        #requests,
+        html,
+        body {
+          width: 100%;
+        }
+        #requests {
+          height: 400px;
+        }
+      </style>
+      <div id="requests"></div>
+      <script type="text/javascript">
+        // Initialize the echarts instance based on the prepared dom
+        var requestsChart = echarts.init(document.getElementById('requests'));
+        window.onresize = function () {
+          requestsChart.resize();
+          linearipChart.resize();
+        };
+        var option6 = {
+          tooltip: {
+                  trigger: 'axis',
+                position: function (pt) {
+                  return [pt[0], '10%'];
+                  }
+          },
+          title: {
+                left: 'center',
+                text: 'Requests per minute'
+          },
+          toolbox: {
+                feature: {
+                      dataZoom: {
+                      yAxisIndex: 'none'
+                },
+                restore: {},
+                saveAsImage: {}
+                }
+          },
+          dataset: {
+                dimensions: RequestsPerMinuteDimensions,
+                source: RequestsPerMinuteData
+              },
+          xAxis: {
+                type: 'category',
+                boundaryGap: false
+        },
+          yAxis: {
+                type: 'value',
+                boundaryGap: [0, '100%']
+          },
+          dataZoom: [
+                {
+                      type: 'inside',
+                      start: 0,
+                      end: 20
+                  },
+                  {
+                      start: 0,
+                      end: 20
+                  }
+              ],
+          series: [
+                  {
+                    name: 'Requests per minute',
+                    type: 'line',
+                    smooth: true,
+                    symbol: 'none',
+                    areaStyle: {},
+                    markPoint: {
+                      data: MarkedPointDataReq,
+                      //symbol: 'image://https://www.pngall.com/wp-content/uploads/2017/05/Alert-Download-PNG.png',
+                      symbolSize: 20,
+                    },
+                    data: RequestsPerMinuteData
+                  }
+                ]
+        };
+        // Display the chart using the configuration items and data just specified.
+        option6 && requestsChart.setOption(option6);
+      </script>
+      <style>
+        #reprequests,
+        html,
+        body {
+          width: 100%;
+        }
+        #reprequests {
+          height: 400px;
+        }
+      </style>
+      <div id="reprequests"></div>
+      <script type="text/javascript">
+        // Initialize the echarts instance based on the prepared dom
+        var reprequestsChart = echarts.init(document.getElementById('reprequests'));
+        window.onresize = function () {
+          reprequestsChart.resize();
+          requestsChart.resize();
+          linearipChart.resize();
+        };
+        var option7 = {
+          tooltip: {
+                  trigger: 'axis',
+                position: function (pt) {
+                  return [pt[0], '10%'];
+                  }
+          },
+          title: {
+                left: 'center',
+                text: 'Repeated requests per minute'
+          },
+          toolbox: {
+                feature: {
+                      dataZoom: {
+                      yAxisIndex: 'none'
+                },
+                restore: {},
+                saveAsImage: {}
+                }
+          },
+        dataset: {
+                dimensions: MinutesRepeatedReqDimensions,
+                source: MinutesRepeatedReqData
+              },
+          xAxis: {
+                type: 'category',
+                boundaryGap: false
+        },
+          yAxis: {
+                type: 'value',
+                boundaryGap: [0, '100%']
+          },
+          dataZoom: [
+                {
+                      type: 'inside',
+                      start: 0,
+                      end: 20
+                  },
+                  {
+                      start: 0,
+                      end: 20
+                  }
+              ],
+          series: [
+                  {
+                    name: 'Repeated requests per minute',
+                    type: 'line',
+                    smooth: true,
+                    symbol: 'none',
+                    areaStyle: {},
+            data: MinutesRepeatedReqData
+                }
+              ]
+            };
+        // Display the chart using the configuration items and data just specified.
+        option7 && reprequestsChart.setOption(option7);
+      </script>
+      <style>
+        #linear404,
+        html,
+        body {
+          width: 100%;
+        }
+        #linear404 {
+          height: 400px;
+        }
+      </style>
+      <div id="linear404"></div>
+      <script type="text/javascript">
+        // Initialize the echarts instance based on the prepared dom
+        var linear404Chart = echarts.init(document.getElementById('linear404'));
+        window.onresize = function () {
+          reprequestsChart.resize();
+          requestsChart.resize();
+          linearipChart.resize();
+        };
+        var option404 = {
+          tooltip: {
+                  trigger: 'axis',
+                position: function (pt) {
+                  return [pt[0], '10%'];
+                  }
+          },
+          title: {
+                left: 'center',
+                text: '404 reponses per minute'
+          },
+          toolbox: {
+                feature: {
+                      dataZoom: {
+                      yAxisIndex: 'none'
+                },
+                restore: {},
+                saveAsImage: {}
+                }
+          },
+        //dataset: {
+        //        dimensions: MinutesRepeatedReqDimensions,
+        //        source: MinutesRepeatedReqData
+        //      },
+          xAxis: {
+                type: 'category',
+                data: MinutesXAxisData,
+                boundaryGap: false
+        },
+          yAxis: {
+                type: 'value',
+                data: YAxis404Data,
+                boundaryGap: [0, '100%']
+          },
+          dataZoom: [
+                {
+                      type: 'inside',
+                      start: 0,
+                      end: 20
+                  },
+                  {
+                      start: 0,
+                      end: 20
+                  }
+              ],
+          series: [
+                  {
+                    name: '404 responses per minute',
+                    type: 'line',
+                    smooth: true,
+                    symbol: 'none',
+                    areaStyle: {},
+                    data: YAxis404Data,
+                    markPoint: {
+                      data: MarkedPointData404,
+                      //symbol: 'image://https://www.pngall.com/wp-content/uploads/2017/05/Alert-Download-PNG.png',
+                      symbolSize: 20,
+                    },
+                }
+              ]
+            };
+        // Display the chart using the configuration items and data just specified.
+        option404 && linear404Chart.setOption(option404);
+      </script>
+      <style>
+        #ipsand404,
+        html,
+        body {
+          width: 100%;
+        }
+        #ipsand404 {
+          height: 400px;
+        }
+      </style>
+      <div id="ipsand404"></div>
+      <script type="text/javascript">
+        // Initialize the echarts instance based on the prepared dom
+        var ipsand404Chart = echarts.init(document.getElementById('ipsand404', 'infographic'));
+        window.onresize = function () {
+          ipsand404pmChart.resize();
+          reqand404Chart.resize();
+          repeatedandreqChart.resize();
+          ipsandreqChart.resize();
+          ipsPerMinuteChart.resize();
+          methodsChart.resize();
+          timeChart.resize();
+          myOtherChart.resize();
+          myChart.resize();
+          ipsand404Chart.resize();
+          reprequestsChart.resize();
+          requestsChart.resize();
+          linearipChart.resize();
+        };
+        var option8 = {
+          tooltip: {
+                  trigger: 'axis',
+                position: function (pt) {
+                  return [pt[0], '10%'];
+                  }
+          },
+          title: {
+                left: 'center',
+                text: 'IPs with 404 Status Codes'
+          },
+          toolbox: {
+                feature: {
+                      dataZoom: {
+                      yAxisIndex: 'none'
+                },
+                restore: {},
+                saveAsImage: {}
+                }
+          },
+        dataset: {
+                dimensions: IPsand404Dimensions,
+                source: IPsand404Data
+              },
+          xAxis: {
+                type: 'category',
+                boundaryGap: false
+        },
+          yAxis: {
+                type: 'value',
+                boundaryGap: [0, '100%']
+          },
+          dataZoom: [
+                {
+                      type: 'inside',
+                      start: 0,
+                      end: 20
+                  },
+                  {
+                      start: 0,
+                      end: 20
+                  }
+              ],
+          series: [
+                  {
+                    name: 'Amount of 404 status codes',
+                    type: 'bar',
+                    smooth: true,
+                    symbol: 'none',
+                    areaStyle: {},
+                    data: IPsand404Data
+                }
+              ]
+            };
+        // Display the chart using the configuration items and data just specified.
+        option8 && ipsand404Chart.setOption(option8);
+      </script>
+    </div>
+
+    <div id="Contact" class="tabcontent">
+  <h3>Graficas</h3>
+  <style>
+       #ipsandreq,
+       html,
+       body {
+         width: 100%;
+       }
+       #ipsandreq {
+         height: 400px;
+       }
+    </style>
+    <div id="ipsandreq"></div>
+    <script type="text/javascript">
+      // Initialize the echarts instance based on the prepared dom
+      var ipsandreqChart = echarts.init(document.getElementById('ipsandreq'), 'infographics');
+      window.onresize = function () {
+        ipsandreqChart.resize();
+      };
+      var option9 = {
+        title: {
+            text: 'IPs and Requests Per Minute'
+        },
+        legend: {
+            data: ['IPs per minute', 'Requests per minute']
+        },
+        toolbox: {
+            // y: 'bottom',
+          feature: {
+              magicType: {
+                    type: ['stack']
+              },
+              dataView: {},
+              saveAsImage: {
+                  pixelRatio: 2
+              }
+            }
+          },
+          tooltip: {},
+          xAxis: {
+            data: MinutesXAxisData,
+            splitLine: {
+              show: false
+            }
+          },
+          yAxis: {},
+          dataZoom: [
+                  {
+                          type: 'inside',
+                          start: 0,
+                        end: 20
+                    },
+                    {
+                        start: 0,
+                        end: 20
+                    }
+          ],
+          series: [
+              {
+                name: 'IPs per minute',
+                type: 'bar',
+                data: IPsYAxisData,
+                markLine: {data: [{ type: 'average', name: 'Avg' }]},
+                emphasis: {
+                  focus: 'series'
+                },
+                animationDelay: function (idx) {
+                  return idx * 10;
+                }
+            },
+            {
+                name: 'Requests per minute',
+                type: 'bar',
+                data: RequestsYAxisData,
+                //markPoint: {
+                //  data: MarkedPointDataIP,
+                //  symbol: 'image://https://www.pngall.com/wp-content/uploads/2017/05/Alert-Download-PNG.png',
+                //  symbolSize: 20,
+                //},
+                markLine: {data: [{ type: 'average', name: 'Avg' }]},
+                emphasis: {
+                  focus: 'series'
+                },
+                animationDelay: function (idx) {
+                  return idx * 10 + 100;
+                }
+            }
+          ],
+          animationEasing: 'elasticOut',
+          animationDelayUpdate: function (idx) {
+            return idx * 5;
+          }
+      };
+    option9 && ipsandreqChart.setOption(option9);
+    </script>
+    <style>
+       #repeatedandreq,
+       html,
+       body {
+         width: 100%;
+       }
+       #repeatedandreq {
+         height: 400px;
+       }
+    </style>
+    <div id="repeatedandreq"></div>
+    <script type="text/javascript">
+      // Initialize the echarts instance based on the prepared dom
+      var repeatedandreqChart = echarts.init(document.getElementById('repeatedandreq', 'infographic'));
+      window.onresize = function () {
+        repeatedandreqChart.resize();
+        ipsandreqChart.resize();
+      };
+      var option10 = {
+  	title: {
+    	   text: 'Requests and Repeated Requests Per Minute'
+  	},
+  	legend: {
+    	   data: ['Requests per minute', 'Repeated requests per minute']
+  	},
+  	toolbox: {
+    	   // y: 'bottom',
+    	 feature: {
+      	   magicType: {
+        	      type: ['stack']
+      	   },
+      	   dataView: {},
+      	   saveAsImage: {
+              pixelRatio: 2
+           }
+         }
+       },
+       tooltip: {},
+       xAxis: {
+         data: MinutesXAxisData,
+         splitLine: {
+           show: false
+         }
+       },
+       yAxis: {},
+       dataZoom: [
+    	         {
+      	              type: 'inside',
+                      start: 0,
+                     end: 20
+                 },
+                 {
+                     start: 0,
+                     end: 20
+                 }
+       ],
+       series: [
+          {
+            name: 'Requests per minute',
+            type: 'bar',
+            data: RequestsYAxisData,
+            color: '#91cc75',
+            //markPoint: {
+            //  data: MarkedPointData,
+              //symbol: 'image://https://www.pngall.com/wp-content/uploads/2017/05/Alert-Download-PNG.png',
+            //  symbolSize: 20,
+            //},
+            markLine: {data: [{ type: 'average', name: 'Avg' }]},
+            emphasis: {
+              focus: 'series'
+            },
+            animationDelay: function (idx) {
+              return idx * 10;
+            }
+         },
+         {
+            name: 'Repeated requests per minute',
+            type: 'bar',
+            data: RepeatedRequestsYAxisData,
+            color: '#fc8452',
+            markLine: {data: [{ type: 'average', name: 'Avg' }]},
+            emphasis: {
+              focus: 'series'
+            },
+            animationDelay: function (idx) {
+              return idx * 10 + 100;
+            }
+         }
+      ],
+      animationEasing: 'elasticOut',
+      animationDelayUpdate: function (idx) {
+         return idx * 5;
+      }
+    };
+    option10 && repeatedandreqChart.setOption(option10);
+    </script>
+    <style>
+       #reqand404,
+       html,
+       body {
+         width: 100%;
+       }
+       #reqand404 {
+         height: 400px;
+       }
+    </style>
+    <div id="reqand404"></div>
+    <script type="text/javascript">
+      // Initialize the echarts instance based on the prepared dom
+      var reqand404Chart = echarts.init(document.getElementById('reqand404', 'infographic'));
+      window.onresize = function () {
+        reqand404Chart.resize();
+        repeatedandreqChart.resize();
+        ipsandreqChart.resize();
+      };
+      var option11 = {
+  	title: {
+    	   text: 'Requests and 404 Status Codes Per Minute'
+  	},
+  	legend: {
+    	   data: ['Requests per minute', '404 per minute']
+  	},
+  	toolbox: {
+    	   // y: 'bottom',
+    	 feature: {
+      	   magicType: {
+        	      type: ['stack']
+      	   },
+      	   dataView: {},
+      	   saveAsImage: {
+              pixelRatio: 2
+           }
+         }
+       },
+       tooltip: {},
+       xAxis: {
+         data: MinutesXAxisData,
+         splitLine: {
+           show: false
+         }
+       },
+       yAxis: {},
+       dataZoom: [
+    	         {
+      	              type: 'inside',
+                      start: 0,
+                     end: 20
+                 },
+                 {
+                     start: 0,
+                     end: 20
+                 }
+       ],
+       series: [
+          {
+            name: 'Requests per minute',
+            type: 'bar',
+            data: RequestsYAxisData,
+            color: '#91cc75',
+            markLine: {data: [{ type: 'average', name: 'Avg' }]},
+            emphasis: {
+              focus: 'series'
+            },
+            animationDelay: function (idx) {
+              return idx * 10;
+            }
+         },
+         {
+            name: '404 per minute',
+            type: 'bar',
+            data: YAxis404Data,
+            color: 'red',
+            markLine: {data: [{ type: 'average', name: 'Avg' }]},
+            emphasis: {
+              focus: 'series'
+            },
+            animationDelay: function (idx) {
+              return idx * 10 + 100;
+            }
+         }
+      ],
+      animationEasing: 'elasticOut',
+      animationDelayUpdate: function (idx) {
+         return idx * 5;
+      }
+    };
+    option11 && reqand404Chart.setOption(option11);
+    </script>   
+    <style>
+       #ipsand404pm,
+       html,
+       body {
+         width: 100%;
+       }
+       #ipsand404pm {
+         height: 400px;
+       }
+    </style>
+    <div id="ipsand404pm"></div>
+    <script type="text/javascript">
+      // Initialize the echarts instance based on the prepared dom
+      var ipsand404pmChart = echarts.init(document.getElementById('ipsand404pm', 'infographic'));
+      window.onresize = function () {
+        ipsand404pmChart.resize();
+        reqand404Chart.resize();
+        repeatedandreqChart.resize();
+        ipsandreqChart.resize();
+        ipsPerMinuteChart.resize();
+        methodsChart.resize();
+        timeChart.resize();
+        myOtherChart.resize();
+        myChart.resize();
+        ipsand404Chart.resize();
+        reprequestsChart.resize();
+        requestsChart.resize();
+        linearipChart.resize();
+      };
+      var option12 = {
+  	title: {
+    	   text: 'IPs and 404 Status Codes Per Minute'
+  	},
+  	legend: {
+    	   data: ['IPs per minute', '404 per minute']
+  	},
+  	toolbox: {
+    	   // y: 'bottom',
+    	 feature: {
+      	   magicType: {
+        	      type: ['stack']
+      	   },
+      	   dataView: {},
+      	   saveAsImage: {
+              pixelRatio: 2
+           }
+         }
+       },
+       tooltip: {},
+       xAxis: {
+         data: MinutesXAxisData,
+         splitLine: {
+           show: false
+         }
+       },
+       yAxis: {},
+       dataZoom: [
+    	         {
+      	              type: 'inside',
+                      start: 0,
+                     end: 20
+                 },
+                 {
+                     start: 0,
+                     end: 20
+                 }
+       ],
+       series: [
+          {
+            name: 'IPs per minute',
+            type: 'bar',
+            data: IPsYAxisData,
+            markLine: {data: [{ type: 'average', name: 'Avg' }]},
+            emphasis: {
+              focus: 'series'
+            },
+            animationDelay: function (idx) {
+              return idx * 10;
+            }
+         },
+         {
+            name: '404 per minute',
+            type: 'bar',
+            data: YAxis404Data,
+            color: 'red',
+            markLine: {data: [{ type: 'average', name: 'Avg' }]},
+            emphasis: {
+              focus: 'series'
+            },
+            animationDelay: function (idx) {
+              return idx * 10 + 100;
+            }
+         }
+      ],
+      animationEasing: 'elasticOut',
+      animationDelayUpdate: function (idx) {
+         return idx * 5;
+      }
+    };
+    option12 && ipsand404pmChart.setOption(option12);
+    </script>
+    </div>
+
+    <div id="Exponential" class="tabcontent">
+      <h3>Graficas</h3>
+      <style>
+        #smoothips,
+        html,
+        body {
+          width: 100%;
+        }
+        #smoothips {
+          height: 400px;
+        }
+      </style>
+      <div id="smoothips"></div>
+      <script type="text/javascript">
+        // Initialize the echarts instance based on the prepared dom
+        var smoothIpsChart = echarts.init(document.getElementById('smoothips', 'infographic'));
+        window.onresize = function () {
+          ipsand404pmChart.resize();
+          reqand404Chart.resize();
+          repeatedandreqChart.resize();
+          ipsandreqChart.resize();
+          ipsPerMinuteChart.resize();
+          methodsChart.resize();
+          timeChart.resize();
+          myOtherChart.resize();
+          myChart.resize();
+          ipsand404Chart.resize();
+          smoothIpsChart.resize();
+          reprequestsChart.resize();
+          requestsChart.resize();
+          linearipChart.resize();
+        };
+        var optionSmooth1 = {
+          title: {
+            text: 'Exponential Smoothing IPs per minute'
+          },
+          tooltip: {
+            trigger: 'axis'
+          },
+          legend: {
+            data: ['Original', 'Smoothed']
+          },
+          //grid: {
+          //  left: '3%',
+          //  right: '4%',
+          //  bottom: '3%',
+          //  containLabel: true
+          //},
+          toolbox: {
+            feature: {
+              saveAsImage: {}
+            }
+          },
+          xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: MinutesXAxisData
+          },
+          yAxis: {
+            type: 'value'
+          },
+          dataZoom: [
+                {
+                      type: 'inside',
+                      start: 0,
+                      end: 20
+                  },
+                  {
+                      start: 0,
+                      end: 20
+                  }
+              ],
+          series: [
+            {
+              name: 'Original',
+              type: 'line',
+              //stack: 'Total',
+              data: IPsYAxisData
+            },
+            {
+              name: 'Smoothed',
+              type: 'line',
+              //stack: 'Total',
+              data:  SmoothIPsYAxisData
+            }
+          ]
+        };
+
+        optionSmooth1 && smoothIpsChart.setOption(optionSmooth1);
+      </script>  
+      <style>
+        #smoothreqs,
+        html,
+        body {
+          width: 100%;
+        }
+        #smoothreqs {
+          height: 400px;
+        }
+      </style>
+      <div id="smoothreqs"></div>
+      <script type="text/javascript">
+        // Initialize the echarts instance based on the prepared dom
+        var smoothReqsChart = echarts.init(document.getElementById('smoothreqs', 'vintage'));
+        window.onresize = function () {
+          ipsand404pmChart.resize();
+          reqand404Chart.resize();
+          repeatedandreqChart.resize();
+          ipsandreqChart.resize();
+          ipsPerMinuteChart.resize();
+          methodsChart.resize();
+          timeChart.resize();
+          myOtherChart.resize();
+          myChart.resize();
+          ipsand404Chart.resize();
+          smoothIpsChart.resize();
+          reprequestsChart.resize();
+          requestsChart.resize();
+          linearipChart.resize();
+        };
+        var optionSmooth2 = {
+          title: {
+            text: 'Exponential Smoothing Requests per minute'
+          },
+          tooltip: {
+            trigger: 'axis'
+          },
+          legend: {
+            data: ['Original', 'Smoothed']
+          },
+          //grid: {
+          //  left: '3%',
+          //  right: '4%',
+          //  bottom: '3%',
+          //  containLabel: true
+          //},
+          toolbox: {
+            feature: {
+              saveAsImage: {}
+            }
+          },
+          xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: MinutesXAxisData
+          },
+          yAxis: {
+            type: 'value'
+          },
+          dataZoom: [
+                {
+                      type: 'inside',
+                      start: 0,
+                      end: 20
+                  },
+                  {
+                      start: 0,
+                      end: 20
+                  }
+              ],
+          series: [
+            {
+              name: 'Original',
+              type: 'line',
+              //stack: 'Total',
+              data: RequestsYAxisData
+            },
+            {
+              name: 'Smoothed',
+              type: 'line',
+              //stack: 'Total',
+              data:  SmoothRequestsYAxisData
+            }
+          ]
+        };
+
+        optionSmooth2 && smoothReqsChart.setOption(optionSmooth2);
+      </script> 
+      <style>
+        #smoothrepreqs,
+        html,
+        body {
+          width: 100%;
+        }
+        #smoothrepreqs {
+          height: 400px;
+        }
+      </style>
+      <div id="smoothrepreqs"></div>
+      <script type="text/javascript">
+        // Initialize the echarts instance based on the prepared dom
+        var smoothRepReqsChart = echarts.init(document.getElementById('smoothrepreqs', 'vintage'));
+        window.onresize = function () {
+          ipsand404pmChart.resize();
+          reqand404Chart.resize();
+          repeatedandreqChart.resize();
+          ipsandreqChart.resize();
+          ipsPerMinuteChart.resize();
+          methodsChart.resize();
+          timeChart.resize();
+          myOtherChart.resize();
+          myChart.resize();
+          ipsand404Chart.resize();
+          smoothIpsChart.resize();
+          smoothReqsChart.resize();
+          smoothRepReqsChart.resize();
+          reprequestsChart.resize();
+          requestsChart.resize();
+          linearipChart.resize();
+        };
+        var optionSmooth3 = {
+          title: {
+            text: 'Exponential Smoothing Repeated Requests per minute'
+          },
+          tooltip: {
+            trigger: 'axis'
+          },
+          legend: {
+            data: ['Original', 'Smoothed']
+          },
+          //grid: {
+          //  left: '3%',
+          //  right: '4%',
+          //  bottom: '3%',
+          //  containLabel: true
+          //},
+          toolbox: {
+            feature: {
+              saveAsImage: {}
+            }
+          },
+          xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: MinutesXAxisData
+          },
+          yAxis: {
+            type: 'value'
+          },
+          dataZoom: [
+                {
+                      type: 'inside',
+                      start: 0,
+                      end: 20
+                  },
+                  {
+                      start: 0,
+                      end: 20
+                  }
+              ],
+          series: [
+            {
+              name: 'Original',
+              type: 'line',
+              //stack: 'Total',
+              data: RepeatedRequestsYAxisData
+            },
+            {
+              name: 'Smoothed',
+              type: 'line',
+              //stack: 'Total',
+              data:  SmoothRepRequestsYAxisData
+            }
+          ]
+        };
+
+        optionSmooth3 && smoothRepReqsChart.setOption(optionSmooth3);
+      </script>  
+      <style>
+        #ratioreqip,
+        html,
+        body {
+          width: 100%;
+        }
+        #ratioreqip {
+          height: 400px;
+        }
+      </style>
+      <div id="ratioreqip"></div>
+      <script type="text/javascript">
+        // Initialize the echarts instance based on the prepared dom
+        var ratioreqipChart = echarts.init(document.getElementById('ratioreqip'));
+        window.onresize = function () {
+          ipsand404pmChart.resize();
+          reqand404Chart.resize();
+          repeatedandreqChart.resize();
+          ipsandreqChart.resize();
+          ipsPerMinuteChart.resize();
+          methodsChart.resize();
+          timeChart.resize();
+          myOtherChart.resize();
+          myChart.resize();
+          ipsand404Chart.resize();
+          smoothIpsChart.resize();
+          smoothReqsChart.resize();
+          reprequestsChart.resize();
+          smoothRepReqsChart.resize();
+          requestsChart.resize();
+          linearipChart.resize();
+          ratioreqipChart.resize();
+        };
+        var optionRatio1 = {
+          tooltip: {
+                  trigger: 'axis',
+                position: function (pt) {
+                  return [pt[0], '10%'];
+                  }
+          },
+          title: {
+                left: 'center',
+                text: 'IP to Requests ratio per minute'
+          },
+          toolbox: {
+                feature: {
+                      dataZoom: {
+                      yAxisIndex: 'none'
+                },
+                restore: {},
+                saveAsImage: {}
+                }
+          },
+        dataset: {
+                //dimensions: MinutesRepeatedReqDimensions,
+                source: ratioReqIPData,
+              },
+          xAxis: {
+                type: 'category',
+                boundaryGap: false
+        },
+          yAxis: {
+                type: 'value',
+                boundaryGap: [0, '100%']
+          },
+          dataZoom: [
+                {
+                      type: 'inside',
+                      start: 0,
+                      end: 20
+                  },
+                  {
+                      start: 0,
+                      end: 20
+                  }
+              ],
+          series: [
+                  {
+                    name: 'IP to Requests ratio per minute',
+                    type: 'line',
+                    //smooth: true,
+                    symbol: 'none',
+                    areaStyle: {},
+            data: ratioReqIPData
+                }
+              ]
+            };
+        // Display the chart using the configuration items and data just specified.
+        optionRatio1 && ratioreqipChart.setOption(optionRatio1);
+      </script>
+       <style>
+        #ratioreq404,
+        html,
+        body {
+          width: 100%;
+        }
+        #ratioreq404 {
+          height: 400px;
+        }
+      </style>
+      <div id="ratioreq404"></div>
+      <script type="text/javascript">
+        // Initialize the echarts instance based on the prepared dom
+        var ratioreq404Chart = echarts.init(document.getElementById('ratioreq404'));
+        window.onresize = function () {
+          ipsand404pmChart.resize();
+          reqand404Chart.resize();
+          repeatedandreqChart.resize();
+          ipsandreqChart.resize();
+          ipsPerMinuteChart.resize();
+          methodsChart.resize();
+          timeChart.resize();
+          myOtherChart.resize();
+          myChart.resize();
+          ipsand404Chart.resize();
+          smoothIpsChart.resize();
+          smoothReqsChart.resize();
+          reprequestsChart.resize();
+          smoothRepReqsChart.resize();
+          requestsChart.resize();
+          linearipChart.resize();
+          ratioreqipChart.resize();
+          ratioreq404Chart.resize();
+          linear404Chart.resize();
+        };
+        var optionRatio2 = {
+          tooltip: {
+                  trigger: 'axis',
+                position: function (pt) {
+                  return [pt[0], '10%'];
+                  }
+          },
+          title: {
+                left: 'center',
+                text: '404 to Requests ratio per minute'
+          },
+          toolbox: {
+                feature: {
+                      dataZoom: {
+                      yAxisIndex: 'none'
+                },
+                restore: {},
+                saveAsImage: {}
+                }
+          },
+        dataset: {
+                //dimensions: MinutesRepeatedReqDimensions,
+                source: ratioReq404Data,
+              },
+          xAxis: {
+                type: 'category',
+                boundaryGap: false
+        },
+          yAxis: {
+                type: 'value',
+                boundaryGap: [0, '100%']
+          },
+          dataZoom: [
+                {
+                      type: 'inside',
+                      start: 0,
+                      end: 20
+                  },
+                  {
+                      start: 0,
+                      end: 20
+                  }
+              ],
+          series: [
+                  {
+                    name: '404 to Requests ratio per minute',
+                    type: 'line',
+                    smooth: true,
+                    symbol: 'none',
+                    areaStyle: {},
+            data: ratioReq404Data,
+                }
+              ]
+            };
+        // Display the chart using the configuration items and data just specified.
+        optionRatio2 && ratioreq404Chart.setOption(optionRatio2);
+      </script>  
+    </div>
+
+
+    <script>
+      function openPage(pageName,elmnt,color) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].style.backgroundColor = "";
+        }
+        document.getElementById(pageName).style.display = "block";
+        elmnt.style.backgroundColor = color;
+
+        ipsand404pmChart.resize();
+        reqand404Chart.resize();
+        repeatedandreqChart.resize();
+        ipsandreqChart.resize();
+        ipsPerMinuteChart.resize();
+        methodsChart.resize();
+        timeChart.resize();
+        myOtherChart.resize();
+        myChart.resize();
+        ipsand404Chart.resize();
+        smoothIpsChart.resize();
+        smoothReqsChart.resize();
+        reprequestsChart.resize();
+        smoothRepReqsChart.resize();
+        requestsChart.resize();
+        linearipChart.resize();
+        ratioreqipChart.resize();
+        ratioreq404Chart.resize();
+        linear404Chart.resize();
+      }
+
+      // Get the element with id="defaultOpen" and click on it
+      document.getElementById("defaultOpen").click();
+    </script>
+   
+  </body>
+</html> 

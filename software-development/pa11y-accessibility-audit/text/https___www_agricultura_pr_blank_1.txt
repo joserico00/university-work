@@ -1,0 +1,24 @@
+
+Welcome to Pa11y
+
+ > Running Pa11y on URL https://www.agricultura.pr/blank-1
+
+Results for URL: https://www.agricultura.pr/blank-1
+
+ • Error: This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 2.23:1. Recommendation:  change background to #4a8074.
+   ├── WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail
+   ├── #comp-kusmc9se > a > div > span:nth-child(1)
+   └── <span class="StylableButton2545352419__label wixui-button__label" data-testid="stylablebutton-label">RFP ESPAÑOL</span>
+
+ • Error: This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 2.23:1. Recommendation:  change background to #4a8074.
+   ├── WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail
+   ├── #comp-linkktsd > a > div > span:nth-child(1)
+   └── <span class="StylableButton2545352419__label wixui-button__label" data-testid="stylablebutton-label">RFP ENGLISH</span>
+
+ • Error: This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 2.23:1. Recommendation:  change background to #4a8074.
+   ├── WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail
+   ├── #comp-linkldfm > a > div > span:nth-child(1)
+   └── <span class="StylableButton2545352419__label wixui-button__label" data-testid="stylablebutton-label">ATTACHMENT B</span>
+
+3 Errors
+
