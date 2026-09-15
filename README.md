@@ -27,7 +27,7 @@ Each project is self-contained in its own folder, with a README explaining what 
 | Project | Description | Tech |
 |---|---|---|
 | [Deep Learning Coursework](machine-learning/deep-learning-coursework/) | Softmax regression on Fashion-MNIST, plus a Transformer-encoder classifier that separates benign from malicious network connections. | PyTorch, d2l, TensorFlow/Keras |
-| [Malware Image Classification](machine-learning/malware-image-classification/) | Cleaned CNN notebooks for classifying Malimg and Microsoft BIG 2015 malware-family image datasets, with reproducible configuration and evaluation. | TensorFlow/Keras, scikit-learn, Jupyter |
+| [Malware Image Classification](machine-learning/malware-image-classification/) | Final machine-learning course project using CNNs to classify Malimg and Microsoft BIG 2015 malware-family images, with archived results and cleaned reproducible notebooks. | TensorFlow/Keras, scikit-learn, Jupyter |
 
 My high performance computing bootcamp projects have their own repositories. See [Related repositories](#related-repositories).
 
