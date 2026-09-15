@@ -12,6 +12,7 @@ Each project is self-contained in its own folder, with a README explaining what 
 |---|---|---|
 | [Network Scanner Prototypes](cybersecurity/network-scanner-prototypes/) | Prototypes that led to my graduate project [NVSRCO](https://github.com/joserico00/NVSRCO). The progression runs from single-file nmap scanners to timestamped scan history, Plotly Dash dashboards, local CVE lookups and an OpenVAS (GVM) automation pipeline. | Python, python-nmap, OpenVAS/GMP, NVD API, Dash, Docker |
 | [Python Network Tools](cybersecurity/python-network-tools/) | Low-level networking scripts: subnet detection, ARP/ICMP/TCP host discovery, SYN port scanning, packet sniffing, nmap automation and NVD lookups. | Python, Scapy, raw sockets, python-nmap |
+| [Ghidra Decompilation Analysis](cybersecurity/reverse-engineering/decompiler-analysis/) | Spanish-language analysis of where decompiled C differs from source, with an English project summary and browser-friendly PDF. | Ghidra, C, x86 assembly, reverse engineering |
 
 ### Data Science
 
@@ -25,7 +26,8 @@ Each project is self-contained in its own folder, with a README explaining what 
 
 | Project | Description | Tech |
 |---|---|---|
-| [Deep Learning Coursework](machine-learning/deep-learning-coursework/) | Softmax regression on Fashion-MNIST, plus a Transformer-encoder classifier that separates benign from malicious network connections. | PyTorch, d2l, TensorFlow/Keras |
+| [Deep Learning Coursework](machine-learning/deep-learning-coursework/) | Softmax-regression experiments on Fashion-MNIST. Earlier network-traffic and image-loader drafts are archived with their limitations documented. | PyTorch, d2l |
+| [Malware Image Classification](machine-learning/malware-image-classification/) | Final machine-learning course project using CNNs to classify Malimg and Microsoft BIG 2015 malware-family images, with archived results and cleaned reproducible notebooks. | TensorFlow/Keras, scikit-learn, Jupyter |
 
 My high performance computing bootcamp projects have their own repositories. See [Related repositories](#related-repositories).
 
@@ -35,6 +37,7 @@ My high performance computing bootcamp projects have their own repositories. See
 |---|---|---|
 | [Systems Programming in Python](systems-and-algorithms/systems-programming-in-python/) | Operating system concepts: page replacement simulators (FIFO, Optimal, WSClock), a Shortest Job First scheduler, a CPU task queue and a distributed file storage system. | Python, threads, semaphores, sockets, SQLite |
 | [Algorithms Practice](systems-and-algorithms/algorithms-practice/) | Interview and competitive-programming problems: sliding window, two pointers, selection algorithms, divide and conquer, dynamic programming and grid DFS, with complexity analysis. | Python |
+| [Pyret Expression Interpreter](systems-and-algorithms/pyret-interpreter/) | A small interpreter with S-expression parsing, desugaring, typed values, lexical environments, closures and multi-argument functions. | Pyret, interpreters, functional programming |
 
 ### Software Development
 
@@ -44,6 +47,7 @@ My high performance computing bootcamp projects have their own repositories. See
 | [Blockchain in Python](software-development/blockchain-python/) | Minimal proof-of-work blockchain node with mining, transactions, peer registration and longest-chain consensus, plus notes on blockchain cryptography. | Python, Flask, SHA-256 |
 | [Pa11y Accessibility Audit](software-development/pa11y-accessibility-audit/) | Automated WCAG accessibility audit of 18 pages of a public government website, with a summary of the findings. | pa11y, Bash, WCAG 2 AA |
 | [Python GUI Apps](software-development/python-gui-apps/) | Desktop GUI programs: a flight reservation form, a kilometers-to-miles converter, a geometry calculator, multi-window demos and SQLite schema scripts. | PySimpleGUI, SQLite |
+| [Java Rummy Card Game](software-development/java-rummy-card-game/) | Two-player Swing card game with custom deck, hand, set and stack abstractions; original course-framework attribution and GPL license preserved. | Java, Swing, object-oriented design |
 
 ### Bioinformatics
 
