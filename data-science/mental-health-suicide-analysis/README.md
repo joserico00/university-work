@@ -22,11 +22,11 @@ My individual analysis for a group data science project, *"Mental Health and Its
 
 ```
 notebooks/
-├── finalJose.ipynb             # Final analysis: suicide vs. inflation, regression model, conclusions
-├── datascience project.ipynb   # Exploratory work: suicides, disasters, inflation, anxiety/depression
-├── Questions.ipynb             # Research questions
-├── union.ipynb                 # Tool that merges the team's notebooks into one
-├── unionlibrary.py             # Script version of the notebook merger
+├── suicide_inflation_analysis.ipynb   # Final analysis: suicide vs. inflation, regression model, conclusions
+├── exploratory_analysis.ipynb         # Exploratory work: suicides, disasters, inflation, anxiety/depression
+├── research_questions.ipynb           # Research questions
+├── merge_team_notebooks.ipynb         # Tool that merges the team's notebooks into one
+├── merge_notebooks.py                 # Script version of the notebook merger
 ├── CPI.csv, Test.csv           # Working copies of data used by the exploratory notebook
 data/
 ├── suicide/                    # CDC WONDER suicide data, CDC suicide report
@@ -40,7 +40,7 @@ data/
 ```bash
 pip install numpy pandas matplotlib seaborn scipy scikit-learn openpyxl jupyter
 cd notebooks
-jupyter notebook finalJose.ipynb
+jupyter notebook suicide_inflation_analysis.ipynb
 ```
 
 ## Data sources
