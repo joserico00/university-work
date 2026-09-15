@@ -22,8 +22,6 @@ Several notebooks are narrated lesson walkthroughs. Data paths are relative to t
 | [seaborn_plotly_choropleths](seaborn_plotly_choropleths.ipynb) | Coloring by group, seaborn, Plotly choropleths, pandas bar charts | Color dicts, `hue`, `px.choropleth` (USA-states), derived ratio columns | pandas, matplotlib, seaborn, plotly |
 | [matplotlib_plot_types/](matplotlib_plot_types/) | 31 Matplotlib "plot types" gallery notebooks | basic, arrays, stats, unstructured, 3D | matplotlib, numpy |
 | [merge_notebooks](merge_notebooks.ipynb) + [merge_notebooks.py](merge_notebooks.py) | Concatenate all notebooks in the folder into one | `nbformat` | nbformat, glob |
-| [merged_notebook](merged_notebook.ipynb) | Auto-generated concatenation (311 cells) | none | none |
-| [merged_notebookpart1](merged_notebookpart1.ipynb) | Auto-generated concatenation (622 cells) | none | none |
 
 ### Data files in this folder
 
@@ -177,13 +175,7 @@ The **Matplotlib "Plot types" gallery** notebooks ([matplotlib.org/stable/plot_t
 
 `merge_notebooks.py` defines `combine_notebooks(filenames)`. It reads each `*.ipynb` in the current folder with `nbformat` and appends its cells to a new notebook, writing `merged_notebook.ipynb`. `merge_notebooks.ipynb` runs the same code and writes **`merged_notebookpart1.ipynb`**. Its saved output lists the input notebooks (under their earlier file names) and the `nbformat` warnings about duplicate cell IDs.
 
-## merged_notebook.ipynb and merged_notebookpart1.ipynb
-
-These are **auto-generated concatenations with no new content**:
-- `merged_notebook.ipynb` (311 cells) contains, in order, *seaborn_plotly_choropleths*, *covid_county_cases*, *matplotlib_fundamentals*, *suicide_disasters_project_start*, *merge_notebooks*, *airline_schedule_wrangling_assignment*, *pandas_series_and_dataframes*, *groupby_pivot_join*, *data_cleaning_missing_values_duplicates*, *airline_connections_wrangling* and *pandas_statistics_and_filtering*.
-- `merged_notebookpart1.ipynb` (622 cells) was built after `merged_notebook.ipynb` existed, so it contains that notebook again.
-
-Every non-empty cell in both files also appears in one of the notebooks above. The one exception is the cell that writes `merged_notebook.ipynb`, which is the same code as `merge_notebooks.py`.
+The two merged notebooks those scripts produced (311 and 622 cells, 18 MB together) are not kept here: every non-empty cell in them also appears in one of the notebooks above. Run `merge_notebooks.py` to rebuild one.
 
 ---
 

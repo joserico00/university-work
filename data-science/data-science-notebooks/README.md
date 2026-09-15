@@ -30,7 +30,6 @@ Each folder has its own README with detailed notes for every notebook:
 | [seaborn_plotly_choropleths](coursework/seaborn_plotly_choropleths.ipynb) | Color by group, seaborn, Plotly choropleths | `hue`, `px.choropleth`, derived prison-fraction column | seaborn, plotly |
 | [matplotlib_plot_types/](coursework/matplotlib_plot_types/) | 31 Matplotlib gallery notebooks | basic, arrays, stats, unstructured, 3D | matplotlib |
 | [merge_notebooks](coursework/merge_notebooks.ipynb) / [merge_notebooks.py](coursework/merge_notebooks.py) | Concatenate notebooks in a folder | `nbformat` | nbformat |
-| [merged_notebook](coursework/merged_notebook.ipynb), [merged_notebookpart1](coursework/merged_notebookpart1.ipynb) | Auto-generated concatenations of the notebooks above | none | none |
 
 ### `confidence-intervals-clustering/`
 
