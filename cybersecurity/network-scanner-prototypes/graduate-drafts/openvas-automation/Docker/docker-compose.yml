@@ -1,0 +1,15 @@
+version: "3"
+services:
+  openvas:
+    build: .
+    container_name: openvas
+    ports:
+      - "9392:9392"  # Web Interface
+      - "9390:9390"  # API Access
+    environment:
+      USERNAME: "admin"
+      PASSWORD: "admin"
+    volumes:
+      - ./GBCommunitySigningKey.asc:/etc/GBCommunitySigningKey.asc
+    restart: unless-stopped
+

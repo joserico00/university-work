@@ -1,0 +1,14 @@
+
+Welcome to Pa11y
+
+ > Running Pa11y on URL https://www.agricultura.pr/nosotros
+
+Results for URL: https://www.agricultura.pr/nosotros
+
+ • Error: Iframe element requires a non-empty title attribute that identifies the frame.
+   ├── WCAG2AA.Principle2.Guideline2_4.2_4_1.H64.1
+   ├── #comp-jnoxs7no > iframe
+   └── <iframe class="Lihsrz" data-src="" scrolling="no" src="https://static.parastorage.com/services/santa/1.13152.0/node_modules/@wix/santa-galleries/target/Honeycomb/Honeycomb.html?compId=comp-jnoxs7no&amp;deviceType=desktop&amp;locale=en&amp;viewMode=si...
+
+1 Errors
+

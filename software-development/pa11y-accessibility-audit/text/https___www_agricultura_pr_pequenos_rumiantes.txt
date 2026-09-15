@@ -1,0 +1,14 @@
+
+Welcome to Pa11y
+
+ > Running Pa11y on URL https://www.agricultura.pr/pequenos-rumiantes
+
+Results for URL: https://www.agricultura.pr/pequenos-rumiantes
+
+ • Error: This element has role of "button" but does not have a name available to an accessibility API. Valid names are: element content, aria-label undefined, aria-labelledby undefined.
+   ├── WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Div.Name
+   ├── #comp-jmam9dxa
+   └── <div class="comp-jmam9dxa R6ex7N is-animating" id="comp-jmam9dxa" role="button" tabindex="0" aria-disabled="false" data-angle="0" data-angle-style-location="style" data-screen-in-hide="done" style="opacity: 0.9974; clip-path: polygon(95.2382% 0%, 100...
+
+1 Errors
+

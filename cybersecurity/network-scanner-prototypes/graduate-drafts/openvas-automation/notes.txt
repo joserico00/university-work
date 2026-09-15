@@ -1,0 +1,40 @@
+Needed to install
+Nmap
+docker or Install locally openvas on your system
+Linux/Mac
+
+
+Python Libraries needed to run the scripts
+csv
+
+gvm tools
+import dash
+from dash import dcc, html, dash_table
+from dash.dependencies import Input, Output, State, ALL
+import pandas as pd
+from datetime import datetime as dt
+import plotly.express as px
+import plotly.graph_objs as go
+import jsonimport nmap
+import psutil
+import socket
+import ipaddress
+import pandas as pd
+from datetime import datetime
+
+
+
+
+Instructions
+cd docker 
+docker compose build
+docker compose start
+Wait about 30 minutes for openvas to install everything
+sudo python network_discovery.py
+sudo python port_scanner.py
+python create_targets.py
+python create_tasks.py
+python start_tasks.py
+python get_reports.py "this part spends some time scanning "
+python webapp
+

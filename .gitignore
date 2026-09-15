@@ -1,0 +1,23 @@
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Secrets and local config
+.env
+*.key
+*.pem
+
+# Generated / local data
+*.db
+*.sqlite
+instance/
+uplogs/*
+!uplogs/gitit
