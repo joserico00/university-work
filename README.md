@@ -79,3 +79,9 @@ These team projects live in private class organization repositories, so they are
 ## Author
 
 Jose E. Rodriguez Rios · [github.com/joserico00](https://github.com/joserico00)
+
+## License
+
+My own code and written material here are MIT licensed — see [LICENSE](LICENSE).
+Course-provided starter code, assignment text and instructor materials remain the
+property of their authors.
